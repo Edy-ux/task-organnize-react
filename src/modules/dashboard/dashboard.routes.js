@@ -1,12 +1,36 @@
 import { Link, Redirect, Route, Switch, useParams, useRouteMatch } from 'react-router-dom';
-const topics = [
+import PageHeader from '_common/components/PageHeader';
+import DashBoard from './DashBoard';
+
+const DashboardRoutes = ({ match: { url } }) => {
+  const { path } = useRouteMatch()
+  console.log(path)
+  return (
+    <>
+      <Switch>
+        <Route path={`${url}/`} component={() => <DashBoard />} />
+      </Switch>
+    </>
+  );
+};
+export default DashboardRoutes;
+
+
+
+
+
+
+
+/* function Topic() {
+
+  const topics = [
   {
     name: "React Router",
     id: "react-router",
     description: "Declarative, component based routing for React",
     resources: [
       {
-        name: "URL Parameters",
+        name: "URL Parametere",
         id: "url-parameters",
         description:
           "URL parameters are parameters whose values are set dynamically in a page's URL. This allows a route to render the same component while passing that component the dynamic portion of the URL so it can change based off of it.",
@@ -66,19 +90,6 @@ const topics = [
     ]
   }
 ];
-const DashboardRoutes = ({ match: { url } }) => {
-  const { path} = useRouteMatch()
-  return (
-    <>
-      <Switch>
-        <Route path={`${url}/`} component={() => <>Dashboard</>} />
-      </Switch>
-    </>
-  );
-};
-export default DashboardRoutes;
-
-function Topic() {
 
   // The <Route> that rendered this component has a
   // path of `/topics/:topicId`. The `:topicId` portion
@@ -112,9 +123,9 @@ function Topic() {
         <Route path={`${path}/:subId`}>
           <>Bla</>
         </Route>
-        
+
       </Switch>
 
     </div>
   );
-}
+} */
