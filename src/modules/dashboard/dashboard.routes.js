@@ -1,20 +1,18 @@
 import { Link, Redirect, Route, Switch, useParams, useRouteMatch } from 'react-router-dom';
-import PageHeader from '_common/components/PageHeader';
 import DashBoard from './DashBoard';
 
 const DashboardRoutes = ({ match: { url } }) => {
   const { path } = useRouteMatch()
   console.log(path)
   return (
-    <>
-      <Switch>
-        <Route path={`${url}/`} component={() => <DashBoard />} />
-      </Switch>
-    </>
+
+    <Switch>
+      <Route path={`${url}/`} component={DashBoard} />
+    </Switch>
+
   );
 };
 export default DashboardRoutes;
-
 
 
 
@@ -30,7 +28,7 @@ export default DashboardRoutes;
     description: "Declarative, component based routing for React",
     resources: [
       {
-        name: "URL Parametere",
+        name: "URL Parameters",
         id: "url-parameters",
         description:
           "URL parameters are parameters whose values are set dynamically in a page's URL. This allows a route to render the same component while passing that component the dynamic portion of the URL so it can change based off of it.",

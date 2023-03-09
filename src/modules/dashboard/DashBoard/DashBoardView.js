@@ -1,7 +1,17 @@
 
+
+import PageHeader from "_common/components/PageHeader";
+
+
 const DashBoardView = () => {
 
-  return <>DashBoardView</>;
-};
 
+  return (
+    <>
+       <PageHeader title="Dashboard"/>
+    
+    </>
+
+  )
+}
 export default DashBoardView;
