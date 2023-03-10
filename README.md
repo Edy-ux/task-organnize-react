@@ -1,4 +1,6 @@
-# curso-fullstack-devinvestidor-react
+
+# Organizador de tarefas desenvolvido durante o curso frontEnd Tac Dev  Tiago Cordeiro. 
+
 
 ### Repositório do [Curso Frontend React](https://www.youtube.com/watch?v=bxdLk93idaQ&list=PLl4e5NAFzX70Eo0hshlHzmrYi9IG0bYxq) disponível gratuitamente no YouTube:
     

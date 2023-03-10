@@ -8,33 +8,29 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(3, 3),
     marginTop: theme.spacing(8),
     marginLeft: theme.spacing(8),
-    [theme.breakpoints.up("md")]: {
+    [theme.breakpoints.up('md')]: {
       marginTop: theme.spacing(8),
       marginLeft: ({ sidebarIsOpen }) => theme.spacing(sidebarIsOpen ? 30 : 8)
     },
-    transition: theme.transitions.create("margin-left", {
+    transition: theme.transitions.create('margin-left', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen
     })
-
   }
 }));
 
 const RootLayout = ({ children }) => {
-  const { sidebarIsOpen } = useMain()
+  const { sidebarIsOpen } = useMain();
 
   const classes = useStyles({ sidebarIsOpen });
-
 
   return (
     <>
       <Header />
       <SideBar />
-      <main className={classes.main}>
-        {children}
-      </main>
+      <main className={classes.main}>{children}</main>
     </>
-  )
+  );
 };
 
 export default RootLayout;
