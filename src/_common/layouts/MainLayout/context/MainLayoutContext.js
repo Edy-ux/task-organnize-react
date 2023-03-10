@@ -1,20 +1,19 @@
 import { createContext } from "react";
 import useProvideMain from "./useProvideContext";
 
-export const MaintContext = createContext(null)
+export const MaintContext = createContext({})
 
 function ProviderMain({ children }) {
-    const main = useProvideMain()
-
+    const context = useProvideMain()
+   
     return (
         <>
-            <MaintContext.Provider value={main}>
+            <MaintContext.Provider value={context}>
                 {children}
             </MaintContext.Provider>;
         </>
     )
 }
-
 export default ProviderMain
 
 

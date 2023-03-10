@@ -1,24 +1,13 @@
-import { makeStyles } from '@material-ui/core';
-import Header from './Header';
+import { memo } from "react";
+import ProvideMain from "./context/MainLayoutContext";
+import MainLayoutView from "./MainLayoutView";
 
-const useStyles = makeStyles((theme) => ({
-  main: {
-    padding: theme.spacing(3, 3),
-    marginTop: theme.spacing(8),
-    marginLeft: theme.spacing(8),
-    
-  }
-}));
-
-const MainLayout = ({ children }) => {
-  const classes = useStyles();
-
+const MainLayoutViewWrapper = memo(({ children }) => {
   return (
-    <>
-      <Header />
-      <main className={classes.main}>{children}</main>
-    </>
+    <ProvideMain>
+      <MainLayoutView>{children}</MainLayoutView>
+    </ProvideMain>
   )
-};
 
-export default MainLayout;
+});
+export default MainLayoutViewWrapper;

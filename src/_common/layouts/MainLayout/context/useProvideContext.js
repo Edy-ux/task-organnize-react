@@ -1,9 +1,10 @@
 import { useState, memo } from 'react'
 
 const useProvideMain = () => {
-    const [sidebarBarIsOpen, setSidebarIsOpen] = useState(false)
+    const [sidebarIsOpen, setSidebarIsOpen] = useState(false)
     return {
-        sidebarBarIsOpen
+        sidebarIsOpen,
+        setSidebarIsOpen
     }
 }
 

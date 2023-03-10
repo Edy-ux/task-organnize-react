@@ -3,7 +3,7 @@ import DashBoard from './DashBoard';
 
 const DashboardRoutes = ({ match: { url } }) => {
   const { path } = useRouteMatch()
-  console.log(path)
+
   return (
 
     <Switch>
