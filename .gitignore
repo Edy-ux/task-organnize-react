@@ -2,9 +2,9 @@
 
 # dependencies
 /node_modules
+/.components-templates
 /.pnp
 .pnp.js
-
 # testing
 /coverage
 

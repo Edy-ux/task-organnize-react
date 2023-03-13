@@ -1,11 +1,11 @@
-import { Route, Switch, useParams } from 'react-router-dom'
-
+import { Route, Switch } from 'react-router-dom'
 
 
 import UsersList from './UsersList';
 
 //users sub routes
-const UsersRoutes = ({ match: { url, params} }) => {
+const UsersRoutes = ({ match: { url} }) => {
+
 
   return (
     <Switch>

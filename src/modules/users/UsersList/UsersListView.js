@@ -3,7 +3,7 @@ import PageHeader from "_common/components/PageHeader";
 
 
 const UsersListView = () => {
-  console.log()
+
   const newButton = <Button>Novo</Button>
   return <PageHeader title="Usuários" actionButton={newButton} />
 };

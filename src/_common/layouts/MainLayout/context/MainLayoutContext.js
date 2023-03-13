@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import useProvideMain from "./useProvideContext";
+import useProvideMain from "./useProvide"
 
 export const MaintContext = createContext({})
 

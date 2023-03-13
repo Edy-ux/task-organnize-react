@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { Redirect, Route, Switch, Link } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import LazyLoading from '_common/components/LazyLoading/';
 import MainLayout from '_common/layouts/MainLayout/';
 
@@ -9,11 +9,11 @@ const UsersRoutes = lazy(() => import('modules/users/users.routes'));
 
 const MainRoutes = () => {
   return (
-    <MainLayout >
+    <MainLayout>
       <Switch>
         <Route path="/dashboard" component={LazyLoading(DashboardRoutes)} />
         <Route path="/tarefas" component={LazyLoading(TasksRoutes)} />
-        <Route  path="/usuarios/" component={LazyLoading(UsersRoutes)} />
+        <Route path="/usuarios/" component={LazyLoading(UsersRoutes)} />
         <Redirect to="/dashboard" />
       </Switch>
     </MainLayout>
