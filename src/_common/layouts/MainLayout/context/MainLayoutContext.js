@@ -1,16 +1,17 @@
 import { createContext } from "react";
-import useProvideMain from "./useProvide"
+import useProvide from "./useProvide"
 
-export const MaintContext = createContext({})
+export const MainContext = createContext({})
+MainContext.displayName = "MainContext"
 
 function ProviderMain({ children }) {
-    const context = useProvideMain()
+    const context = useProvide()
    
     return (
         <>
-            <MaintContext.Provider value={context}>
+            <MainContext.Provider value={context}>
                 {children}
-            </MaintContext.Provider>;
+            </MainContext.Provider>;
         </>
     )
 }

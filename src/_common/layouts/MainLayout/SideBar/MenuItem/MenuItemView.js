@@ -7,21 +7,26 @@ import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import { memo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useMainContext } from '../../context/useMain';
+import useStyles from './MenuItemStyle';
 
-const MenuItemView = memo(({ text, icon, path, items, handleClick, dropDownIsOpen }) => {
+const MenuItemView = ({ text, icon, path, items, handleClick, dropDownIsOpen }) => {
+  const classes = useStyles();
   const { pathname } = useLocation();
- 
+  const {sidebarIsOpen}=  useMainContext()
+
   return (
     <>
       <ListItem
         key={text}
         button
-        component={Link}
-        to={path ?? "tarefas"}
+        component={path ? Link : 'li'}
+        to={path}
+        title={!sidebarIsOpen ? text : ''}
         onClick={items ? handleClick : null}
         selected={pathname === path}>
         <ListItemIcon>{icon}</ListItemIcon>
-        <ListItemText primary={text} /> 
+        <ListItemText primary={text} />
         {items && (dropDownIsOpen ? <ExpandLess /> : <ExpandMore />)}
       </ListItem>
       {/*    {items && (
@@ -35,6 +40,6 @@ const MenuItemView = memo(({ text, icon, path, items, handleClick, dropDownIsOpe
       )} */}
     </>
   );
-});
+};
 
 export default MenuItemView;

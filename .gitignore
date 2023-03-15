@@ -2,9 +2,9 @@
 
 # dependencies
 /node_modules
-/.components-templates
+/curso-fullstack-back-aulas
 /.pnp
-.pnp.js
+.pnp.js 
 # testing
 /coverage
 

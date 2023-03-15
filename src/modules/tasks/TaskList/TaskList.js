@@ -1,7 +1,8 @@
 import TaskListView from './TaskListView';
 
-const TaskList = ({ title }) => {
-  return <TaskListView />;
-};
-
+const TaskList = () => (
+  <>
+    <TaskListView />;
+  </>
+);
 export default TaskList;

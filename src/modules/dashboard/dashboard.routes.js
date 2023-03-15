@@ -1,4 +1,4 @@
-import { Link, Redirect, Route, Switch, useParams, useRouteMatch } from 'react-router-dom';
+import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import DashBoard from './DashBoard';
 
 const DashboardRoutes = ({ match: { url } }) => {

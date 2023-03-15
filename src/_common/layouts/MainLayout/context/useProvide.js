@@ -17,6 +17,7 @@ const menu = [
     text: 'Usuários',
     icon: <PeopleAltOutlinedIcon />,
     path: '/usuarios'
+
   },
   {
     text: 'Tarefas',
@@ -38,10 +39,6 @@ const menu = [
         path: '/tarefas/finalizadas',
         icon: <AssignmentTurnedInOutlinedIcon />
       },
-      {
-        text: 'Todas',
-        path: '/tarefas'
-      }
     ]
   }
 ];

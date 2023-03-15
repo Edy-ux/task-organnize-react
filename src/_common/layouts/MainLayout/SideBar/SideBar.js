@@ -1,10 +1,10 @@
 
-import { useMain } from '../context/useMain';
+import { useMainContext } from '../context/useMain';
 import SideBarView from './SideBarView';
 
 const SideBar = () => {
  
-  const {sidebarIsOpen} = useMain()
+  const {sidebarIsOpen} = useMainContext()
   return <SideBarView  {...{sidebarIsOpen}}/>;
 };
 

@@ -1,5 +1,9 @@
-import { makeStyles } from '@material-ui/core';
-import { useMain } from './context/useMain';
+import { Button, makeStyles } from '@material-ui/core';
+import { memo } from 'react';
+import SnackBar from '_common/components/Snackbar/SnackBar';
+import useSnackbar from '_common/hooks/useSnackbar';
+import ProviderMain from './context/MainLayoutContext';
+import { useMainContext } from './context/useMain';
 import Header from './Header';
 import SideBar from './SideBar';
 
@@ -19,18 +23,19 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const RootLayout = ({ children }) => {
-  const { sidebarIsOpen } = useMain();
-
+const RootLayoutMainView = memo(({ children }) => {
+  const { sidebarIsOpen } = useMainContext();
   const classes = useStyles({ sidebarIsOpen });
 
   return (
     <>
       <Header />
       <SideBar />
-      <main className={classes.main}>{children}</main>
+      <main className={classes.main}>
+        {children}
+      </main>
     </>
   );
-};
+});
 
-export default RootLayout;
+export default RootLayoutMainView;
