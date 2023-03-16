@@ -1,9 +1,6 @@
 import { Button, makeStyles } from '@material-ui/core';
 import { memo } from 'react';
-import SnackBar from '_common/components/Snackbar/SnackBar';
-import useSnackbar from '_common/hooks/useSnackbar';
-import ProviderMain from './context/MainLayoutContext';
-import { useMainContext } from './context/useMain';
+import { useMainContext } from './context/useMainContext';
 import Header from './Header';
 import SideBar from './SideBar';
 
@@ -35,6 +32,6 @@ const RootLayoutMainView = memo(({ children }) => {
       </main>
     </>
   );
-};
+});
 
-export default MainRootLayoutView;
+export default RootLayoutMainView;

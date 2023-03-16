@@ -1,11 +1,11 @@
 import { memo } from 'react';
 import ProviderMain from './context/MainLayoutContext';
-import MainRootLayoutView from './MainLayoutView';
+import RootLayoutMainView from './MainLayoutView';
 
 const MainLayoutWrapper = memo(({ children }) => {
   return (
     <ProviderMain>
-      <MainRootLayoutView>{children}</MainRootLayoutView>
+      <RootLayoutMainView>{children}</RootLayoutMainView>
     </ProviderMain>
   );
 });
