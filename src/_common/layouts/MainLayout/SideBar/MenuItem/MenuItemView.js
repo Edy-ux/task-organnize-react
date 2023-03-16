@@ -7,7 +7,7 @@ import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import { memo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { useMainContext } from '../../context/useMain';
+import { useMainContext } from '../../context/useMainContext';
 import useStyles from './MenuItemStyle';
 
 const MenuItemView = ({ text, icon, path, items, handleClick, dropDownIsOpen }) => {

@@ -1,5 +1,5 @@
 
-import { useMainContext } from '../context/useMain';
+import { useMainContext } from '../context/useMainContext';
 import SideBarView from './SideBarView';
 
 const SideBar = () => {

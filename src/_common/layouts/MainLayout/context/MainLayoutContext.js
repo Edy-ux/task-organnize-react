@@ -1,5 +1,5 @@
-import { createContext } from "react";
-import useProvide from "./useProvide"
+import { createContext, memo } from "react";
+import useProvide from "./useProvideMain"
 
 export const MainContext = createContext({})
 MainContext.displayName = "MainContext"
@@ -15,6 +15,6 @@ function ProviderMain({ children }) {
         </>
     )
 }
-export default ProviderMain
+export default memo(ProviderMain)
 
 

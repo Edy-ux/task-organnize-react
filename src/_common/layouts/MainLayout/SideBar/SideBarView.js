@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import MenuItem from './MenuItem';
 import useStyles from './SideBarStyle';
 import Collapse from '@material-ui/core/Collapse';
-import { useMainContext } from '../context/useMain';
+import { useMainContext } from '../context/useMainContext';
 import { useMemo } from 'react';
 
 const SideBarView = ({ sidebarIsOpen }) => {

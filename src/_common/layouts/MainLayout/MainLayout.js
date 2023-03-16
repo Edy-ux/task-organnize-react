@@ -1,12 +1,12 @@
-import { memo } from "react";
-import ProviderMain from "./context/MainLayoutContext";
-import RootLayoutMainView from "./MainLayoutView";
+import { memo } from 'react';
+import ProviderMain from './context/MainLayoutContext';
+import MainRootLayoutView from './MainLayoutView';
 
-const MainLayoutViewWrapper = memo(({ children }) => {
+const MainLayoutWrapper = memo(({ children }) => {
   return (
     <ProviderMain>
-      <RootLayoutMainView>{children}</RootLayoutMainView>
+      <MainRootLayoutView>{children}</MainRootLayoutView>
     </ProviderMain>
-  )
+  );
 });
-export default MainLayoutViewWrapper;
+export default MainLayoutWrapper;

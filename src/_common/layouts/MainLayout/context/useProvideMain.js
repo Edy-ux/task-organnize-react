@@ -7,6 +7,7 @@ import PeopleAltOutlinedIcon from '@material-ui/icons/PeopleAltOutlined';
 import AssignmentTurnedInOutlinedIcon from '@material-ui/icons/AssignmentTurnedInOutlined';
 import AssignmentIndOutlinedIcon from '@material-ui/icons/AssignmentIndOutlined';
 import AssignmentOutlinedIcon from '@material-ui/icons/AssignmentOutlined';
+
 const menu = [
   {
     text: 'Dashboard',
@@ -42,6 +43,8 @@ const menu = [
     ]
   }
 ];
+
+
 export default function useProvideMain() {
   const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
   const [dropDownIsOpen, setDropDownIsOpen] = useState(false);
