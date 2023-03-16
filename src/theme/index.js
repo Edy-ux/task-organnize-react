@@ -7,21 +7,36 @@ const theme = createTheme({
       contrastText: '#fff'
     },
     secondary: {
-      main: '#08967D'
+      main: '#083796',
     }
   },
+  typography: {
+    fontFamily: [
+      'Graphik', 'Graphik',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(',')
+  },
   shape: {
-    borderRadius: 0
+    borderRadius: 3,
   },
   props: {
     MuiButton: {
       variant: 'contained',
-      color: 'primary'
+      color: 'primary',
     },
     MuiTextField: {
       variant: 'outlined',
-      fullWidth: true
-    }
+      fullWidth: true,
+
+    },
+
   }
 });
 

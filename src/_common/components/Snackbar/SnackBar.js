@@ -8,10 +8,10 @@ const Snackbar = () => {
   const {snackbarSuccess} = useSnackbar()
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') return;
-    setSnackbarState({ open: false });
+    setSnackbarState({ open: false, message: snackbarState.message                                                                                                                                                              });
   };
   const handleOpen = () => snackbarSuccess();
-  return <SnackbarView open={snackbarState.open} message={snackbarState.message} handleClose={handleClose} handleOpen={handleOpen} />;
+  return <SnackbarView open={snackbarState.open} message={snackbarState.message} handleClose={handleClose} handleOpen={handleOpen}  />;
 };
 
 export default Snackbar;

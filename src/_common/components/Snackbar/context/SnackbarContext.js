@@ -4,7 +4,7 @@ export const SnackbarContext = createContext(null);
 SnackbarContext.displayName = 'SnackbarContext';
 
 export const SnackbarContextProvider = memo(({ children }) => {
-  const [snackbarState, setSnackbarState] = useState({ open: false, message: 'Operação efetuada com sucesso!' });
+  const [snackbarState, setSnackbarState] = useState({ open: false });
 
   return (
     <SnackbarContext.Provider

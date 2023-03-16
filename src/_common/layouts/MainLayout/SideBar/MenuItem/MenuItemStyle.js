@@ -5,6 +5,13 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(0),
   
   },
+  linkStyle: {
+    textDecoration: "none",
+    color: 'inherit',
+    display: 'flex',
+    flex: 1,
+    justifyContent: 'space-between',
+  }
 
 }));
 
