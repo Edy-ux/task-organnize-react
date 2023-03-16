@@ -12,9 +12,9 @@ const SnackBarView = ({ open, handleClose, handleOpen, message }) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <Button variant="outlined" onClick={handleOpen}>
+     {/*  <Button variant="outlined" onClick={handleOpen}>
         Open success snackbar
-      </Button>
+      </Button> */}
       <Snackbar open={open} autoHideDuration={4000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="success">
           {message}

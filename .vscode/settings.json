@@ -1,0 +1,8 @@
+{
+  "editor.minimap.enabled": false,
+  "vsicons.presets.hideFolders": true,
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/package-lock.json": true
+  }
+}

@@ -3,7 +3,7 @@ import ConfirmationDialogView from './ConfirmationDialogView';
 
 const ConfirmationDialog = ({ title, text, handleConfirmation }) => {
 
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(false)
 
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {

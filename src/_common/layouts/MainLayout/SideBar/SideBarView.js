@@ -6,10 +6,11 @@ import useStyles from './SideBarStyle';
 import Collapse from '@material-ui/core/Collapse';
 import { useMainContext } from '../context/useMain';
 import { useMemo } from 'react';
+import { Link } from 'react-router-dom';
 
 const SideBarView = ({ sidebarIsOpen }) => {
   const { dropDownIsOpen, menu } = useMainContext();
-  const menuList = useMemo(() => menu, []);
+  const menuList = useMemo(() => menu, [menu]);
   const classes = useStyles();
   return (
     <Drawer
@@ -17,7 +18,8 @@ const SideBarView = ({ sidebarIsOpen }) => {
       classes={{
         paper: clsx(classes.drawer, {
           [classes.drawerOpen]: sidebarIsOpen,
-          [classes.drawerClose]: !sidebarIsOpen
+          [classes.drawerClose]: !sidebarIsOpen,
+
         })
       }}>
       <List>
@@ -28,11 +30,11 @@ const SideBarView = ({ sidebarIsOpen }) => {
               <MenuItem key={`item-${index}`} {...item} />
               {items && (
                 <Collapse in={dropDownIsOpen} timeout="auto" unmountOnExit>
-                  <List component="div" disablePadding>
-                    {items.map((subItem, index) => (
-                      <MenuItem key={`subItem-${index}`} {...subItem} />
-                    ))}
-                  </List>
+                    <List component="div" disablePadding>
+                      {items.map((subItem, index) => (
+                        <MenuItem key={`subItem-${index}`} {...subItem} />
+                      ))}
+                    </List>
                 </Collapse>
               )}
             </>
