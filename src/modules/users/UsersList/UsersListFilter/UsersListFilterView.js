@@ -1,4 +1,3 @@
-
 import useStyles from './UsersListFilterStyle';
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
@@ -8,25 +7,26 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 
-const UsersListFilterView = ({ handleChangeSearchTerm }) => {
+const UsersListFilterView = ({ handleChangeSearchTerm}) => {
   const classes = useStyles();
 
   return (
-    <Paper component="form" className={classes.root}>
-      <InputBase
-        className={classes.input}
-        placeholder="Procure por nome ou email do usuário"
-        inputProps={{ 'aria-label': 'search google maps' }}
-      />
-      <Divider className={classes.divider} orientation="vertical" />
-      <IconButton type="search" className={classes.iconButton} aria-label="search">
-        <SearchIcon />
-      </IconButton>
-
-      {/*   <IconButton color="primary" className={classes.iconButton} aria-label="directions">
-          <DirectionsIcon />
-        </IconButton> */}
-    </Paper>
+    <div className={classes.container}>
+      <Paper component="div" className={classes.paper}>
+          <InputBase
+            onChange={handleChangeSearchTerm}
+            className={classes.input}
+            placeholder="Pesquise por nome ou email"
+            inputProps={{ 'aria-label': 'search users' }}
+          />
+          <div className={classes.wraperIcons}>
+            <Divider style={{ height: 28 }} orientation="vertical" />
+            <IconButton type="button" aria-label="search">
+              <SearchIcon className={classes.searchIcon} />
+            </IconButton>
+          </div>
+      </Paper>
+    </div>
   );
 };
 

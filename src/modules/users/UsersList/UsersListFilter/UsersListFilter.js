@@ -1,22 +1,25 @@
-import { useContext, useEffect, useState } from 'react';
+import { memo, useCallback, useEffect, useState } from 'react';
 import useDebounce from '_common/hooks/useDebounce';
-import { UsersListContext } from '../context/UsersListContext';
+import { useUsersListContext } from '../context/useUsersListContext';
 import UsersListFilterView from './UsersListFilterView';
 
-const UsersListFilter = () => {
-  const { setFilter } = useContext(UsersListContext);
+
+
+const UsersListFilter = memo(() => {
+  const { setSearch } = useUsersListContext();
 
   const [searchTerm, setSerachTerm] = useState('');
 
+   //useDebounce async code
   const debouncedSearchTerm = useDebounce(searchTerm);
 
-  const handleChangeSearchTerm = (event) => setSerachTerm(event.target.value);
+  const handleChangeSearchTerm = (event) => setSerachTerm(event.target.value.trim().toLocaleLowerCase())
 
   useEffect(() => {
-    setFilter(debouncedSearchTerm);
-  }, [debouncedSearchTerm, setFilter]);
+    setSearch(debouncedSearchTerm);
+  }, [debouncedSearchTerm, setSearch]);
 
-  return <UsersListFilterView {...{ handleChangeSearchTerm }} />;
-};
+  return <UsersListFilterView {...{ handleChangeSearchTerm}} />;
+});
 
 export default UsersListFilter;

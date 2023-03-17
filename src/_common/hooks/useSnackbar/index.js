@@ -1,5 +1,3 @@
-import React, { useContext } from 'react';
-import { SnackbarContext } from '_common/components/Snackbar/context/SnackbarContext';
 import useSnackbarContext from '_common/components/Snackbar/context/useSnackbarContext';
 
 const useSnackbar = () => {

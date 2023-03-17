@@ -1,25 +1,41 @@
+import { red } from '@material-ui/core/colors';
 import { makeStyles } from '@material-ui/core/styles';
+import { width } from '@material-ui/system';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    padding: theme.spacing(2),
+  container: {
     marginBottom: theme.spacing(2),
     display: 'flex',
-    alignwItems: 'center',
-    width: '50%',
-    height: "3.8rem",
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%'
   },
+  paper: {
+    width: '30rem',
+    display: 'flex',
+    justifyContent: 'space-between',
+    borderRadius: 30,
+  },
+
   input: {
-    marginLeft: theme.spacing(1),
-    flex: 1,
+    paddingLeft: '0.99rem',
+    width: '100%'
   },
   iconButton: {
     padding: 10,
+ 
   },
-  divider: {
+  wraperIcons: {
+   display: 'flex',
+   alignItems: 'center'
+
+  },
+  searchIcon: {
     height: 28,
-    margin: 4,
+    width: 25,
+   
   },
+ 
 }));
 
 export default useStyles;

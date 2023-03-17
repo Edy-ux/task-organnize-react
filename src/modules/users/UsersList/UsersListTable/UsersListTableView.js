@@ -1,4 +1,3 @@
-import IconButton from '@material-ui/core/IconButton';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -6,55 +5,41 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import useStyles from './UsersListTableStyle'
-const createData = (name, calories, fat, carbs, protein) => ({
-  name,
-  calories,
-  fat,
-  carbs,
-  protein
-})
+import EmptyBox from '_common/lotties/EmptyBox';
+import LoadingSpinner from '_common/lotties/LoadingSpinner';
+import useStyles from './UsersListTableStyle';
 
-
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
-
-
-const UsersListTableView = () => {
-  const classes = useStyles()
+const UsersListTableView = ({ users }) => {
+  const classes = useStyles();
   return (
-    <TableContainer component={Paper} className={classes.table}>
+    <TableContainer component={Paper} className={classes.root}>
       <Table className={classes.table} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>
+            <TableCell>Nome</TableCell>
+            <TableCell>Email</TableCell>
+            <TableCell width={200} align="center">
+              Ações
+            </TableCell>
           </TableRow>
         </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.name} hover>
-              <TableCell component="th" scope="row">
-                {row.name}
-              </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
-            </TableRow>
-          ))}
+        <TableBody className={classes.tbody}>
+          {users &&
+            users.map((user) => (
+              <TableRow key={user.id} hover>
+                <TableCell component="th" scope="row">
+                  {user.name}
+                </TableCell>
+                <TableCell>{user.email}</TableCell>
+                <TableCell align="center">edit</TableCell>
+              </TableRow>
+            ))}
         </TableBody>
       </Table>
+      {!users && <LoadingSpinner />}
+      {(users && !users.length && <EmptyBox />)}
     </TableContainer>
-  )
-}
+  );
+};
 
 export default UsersListTableView;

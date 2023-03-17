@@ -1,5 +1,6 @@
-import { Button, makeStyles } from '@material-ui/core';
+import {makeStyles } from '@material-ui/core';
 import { memo } from 'react';
+import Snackbar from '_common/components/Snackbar';
 import { useMainContext } from './context/useMainContext';
 import Header from './Header';
 import SideBar from './SideBar';
@@ -30,6 +31,7 @@ const RootLayoutMainView = memo(({ children }) => {
       <main className={classes.main}>
         {children}
       </main>
+      <Snackbar />
     </>
   );
 });
