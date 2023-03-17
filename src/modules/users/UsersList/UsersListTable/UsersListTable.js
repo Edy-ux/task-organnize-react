@@ -18,7 +18,7 @@ const UsersListTable = () => {
     getUsers();
   }, [setUsers]);
 
-  /* Set filteredUsers if search is not a string empty. Otherwise set with users data from api */
+  /* Set filteredUsers if search is not a string empty. Otherwise set users with data from api */
   useEffect(() => {
     if (search) {
       const usersFiltered = users.filter((user) => user.name.toLowerCase().includes(search) || user.email.toLowerCase().includes(search));
