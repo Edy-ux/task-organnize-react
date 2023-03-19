@@ -3,16 +3,17 @@ import { createTheme } from '@material-ui/core/styles';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#083796',
+      main: '#2d2f31',
       contrastText: '#fff'
     },
     secondary: {
-      main: '#083796',
+      main: '#2d2f31',
     }
   },
   typography: {
     fontFamily: [
-      'Graphik', 'Graphik',
+      'Open Sans', 
+      'sans-serif',
       '"Segoe UI"',
       'Roboto',
       '"Helvetica Neue"',
@@ -21,10 +22,13 @@ const theme = createTheme({
       '"Apple Color Emoji"',
       '"Segoe UI Emoji"',
       '"Segoe UI Symbol"',
-    ].join(',')
+    ].join(','),
+    htmlFontSize: 17,
   },
+
   shape: {
     borderRadius: 3,
+
   },
   props: {
     MuiButton: {
@@ -36,8 +40,12 @@ const theme = createTheme({
       fullWidth: true,
 
     },
-
-  }
+    MuiListItem: {
+      color: '#FFF'
+      
+    }
+    
+  } 
 });
 
 window['theme'] = theme;

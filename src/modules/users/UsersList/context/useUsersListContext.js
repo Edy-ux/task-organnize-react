@@ -7,10 +7,13 @@ export const useUsersListContext = () => {
   return useContext(UsersListContext);
 };
 
-const useProviderUsersList = () => {
+
+export const useProviderUsersList = () => {
   const [users, setUsers] = useState(null);
   const [search, setSearch] = useState('');
   const [userDialog, setUserDialog] = useState({ open: false });
+  const navigatorIsOnline = navigator.onLine
+
 
   return {
     users,
@@ -18,7 +21,8 @@ const useProviderUsersList = () => {
     search,
     setSearch,
     userDialog,
-    setUserDialog
+    setUserDialog,
+    navigatorIsOnline
   };
 };
 

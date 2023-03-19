@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(8),
     marginLeft: theme.spacing(8),
     [theme.breakpoints.up('md')]: {
+      
       marginTop: theme.spacing(8),
       marginLeft: ({ sidebarIsOpen }) => theme.spacing(sidebarIsOpen ? 30 : 8)
     },

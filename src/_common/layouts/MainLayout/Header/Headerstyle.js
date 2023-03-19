@@ -7,10 +7,10 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
     }),
-    background: `linear-gradient(5deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`
+    background: "#2d2f31"
   },
   menuButton: {
-    marginRight: theme.spacing(2)
+    marginRight: theme.spacing(1)
   },
   title: {
     flexGrow: 1

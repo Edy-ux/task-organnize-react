@@ -1,5 +1,15 @@
-const formatter = new Intl.DateTimeFormat('pt-BR', { dateStyle: 'short', timeStyle: 'short' });
+const options = {
+  year: 'numeric',
+  month: 'numeric',
+  day: 'numeric',
+  hour: 'numeric',
+  minute: 'numeric',
+  second: 'numeric',
+  hour12: false,
+  timeZone: 'America/Sao_Paulo'
+};
 
-const formatDate = (date) => formatter.format(date);
+const formatDateUpdate = (date) => new Intl.DateTimeFormat('default', options).format(date);
+const formatDateCreateAt = (date) => new Intl.DateTimeFormat('pt-BR').format(date);
 
-export default formatDate;
+export { formatDateUpdate, formatDateCreateAt };
