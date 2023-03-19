@@ -8,18 +8,19 @@ import SideBar from './SideBar';
 const useStyles = makeStyles((theme) => ({
   main: {
     padding: theme.spacing(3, 3),
-    marginTop: theme.spacing(8),
-    marginLeft: theme.spacing(8),
+    minHeight: "100vh",
+    marginTop: theme.spacing(5),
     [theme.breakpoints.up('md')]: {
-      
-      marginTop: theme.spacing(8),
-      marginLeft: ({ sidebarIsOpen }) => theme.spacing(sidebarIsOpen ? 30 : 8)
+      marginTop: theme.spacing(5),
+      marginLeft: ({ sidebarIsOpen }) => theme.spacing(sidebarIsOpen ? 26 : 8)
     },
     transition: theme.transitions.create('margin-left', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen
-    })
+    }),
+   
   }
+  
 }));
 
 const RootLayoutMainView = memo(({ children }) => {

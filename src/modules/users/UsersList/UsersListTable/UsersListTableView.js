@@ -15,10 +15,9 @@ import { useTheme } from '@material-ui/core';
 //Components
 import NetworkFailed from '_common/lotties/NetworkFailed';
 import { Grid } from '@material-ui/core';
-import {formatDateCreateAt} from '_common/utils/formaDate';
+import { formatDateCreateAt } from '_common/utils/formaDate';
 
 const UsersListTableView = ({ users, navigatorIsOnline }) => {
-
   const classes = useStyles();
   return (
     <div>
@@ -41,28 +40,27 @@ const UsersListTableView = ({ users, navigatorIsOnline }) => {
           <TableBody className={classes.tbody}>
             {users &&
               users.map((user) => (
-                
                 <TableRow key={user.id} hover>
                   <TableCell component="th" scope="row">
                     {user.name}
                   </TableCell>
                   <TableCell>{user.email}</TableCell>
-                   <TableCell >{formatDateCreateAt(user.createAt)}</TableCell>
+                  <TableCell>{formatDateCreateAt(user.createAt)}</TableCell>
                   <TableCell align="center">
-                    <Grid >
+                    <Grid>
                       <EditIcon cursor="pointer" />
                       <DeleteIcon cursor="pointer" />
                     </Grid>
                   </TableCell>
-       
                 </TableRow>
               ))}
           </TableBody>
         </Table>
-        {!users && <LoadingSpinner />}
+        {!users && (navigatorIsOnline && <LoadingSpinner />)}
         {users && !users?.length && <EmptyBox />}
+        {!users && !navigatorIsOnline && <NetworkFailed />} 
       </TableContainer>
-      {!navigatorIsOnline && <NetworkFailed />}
+  
     </div>
   );
 };

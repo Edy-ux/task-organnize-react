@@ -2,7 +2,6 @@ import Lottie from 'react-lottie';
 import networkFaillData from './network-failed';
 import Typography from '@material-ui/core/Typography';
 
-
 const NetworkFaill = () => {
   const defaultOptions = {
     loop: true,
@@ -10,13 +9,11 @@ const NetworkFaill = () => {
     animationData: networkFaillData
   };
 
-
-
   return (
     <div style={{ padding: '5px 0' }}>
-      <Lottie options={defaultOptions} height={500} width={500} />
+      <Lottie options={defaultOptions} height={300} width={300} />
       <Typography align="center" color="textSecondary">
-        Verifique sua conexão com a internet.
+        Verifique sua conexão com a internset.
       </Typography>
     </div>
   );

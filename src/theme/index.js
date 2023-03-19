@@ -1,18 +1,47 @@
-import { createTheme } from '@material-ui/core/styles';
-
-const theme = createTheme({
+const getDesignTokens = (mode) => ({
   palette: {
-    primary: {
-      main: '#2d2f31',
-      contrastText: '#fff'
-    },
-    secondary: {
-      main: '#2d2f31',
-    }
+    mode: mode,
+    ...(mode === 'light'
+      ? {
+          primary: {
+            main: '#083796',
+            contrastText: '#fff'
+          },
+          secondary: {
+            main: '#08967D'
+          }
+        }
+      : {
+          primary: {
+            main: '#151515'
+          },
+          secondary: {
+            main:"#202123"
+          },
+          background: {
+            paper: '#151515'
+          },
+          drawer: {
+          primary: '#fff'
+          },
+          text: {
+            primary: '#fff'
+          },
+          props: {
+            MuiButton: {
+              variant: 'contained',
+              color: 'primary'
+            },
+            MuiListItem: {
+              color: '#FFF'
+            }
+      
+          }
+        })
   },
   typography: {
     fontFamily: [
-      'Open Sans', 
+      'Open Sans',
       'sans-serif',
       '"Segoe UI"',
       'Roboto',
@@ -21,33 +50,125 @@ const theme = createTheme({
       'sans-serif',
       '"Apple Color Emoji"',
       '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
+      '"Segoe UI Symbol"'
     ].join(','),
-    htmlFontSize: 17,
+    htmlFontSize: 17
   },
 
   shape: {
-    borderRadius: 3,
-
+    borderRadius: 3
   },
   props: {
     MuiButton: {
       variant: 'contained',
-      color: 'primary',
+      color: 'primary'
     },
     MuiTextField: {
       variant: 'outlined',
-      fullWidth: true,
-
+      fullWidth: true
     },
     MuiListItem: {
       color: '#FFF'
-      
     }
-    
-  } 
+  }
 });
 
-window['theme'] = theme;
 
-export default theme;
+
+export default getDesignTokens;
+
+/* 
+const getDesignTokens = () => ({
+ Palete values for light theme
+  palette: {
+        primary: {
+          main: '#083796',
+        },
+        secondary: {
+          main: '#08967D'
+        },
+        typography: {
+          fontFamily: [
+            'Open Sans',
+            'sans-serif',
+            '"Segoe UI"',
+            'Roboto',
+            '"Helvetica Neue"',
+            'Arial',
+            'sans-serif',
+            '"Apple Color Emoji"',
+            '"Segoe UI Emoji"',
+            '"Segoe UI Symbol"'
+          ].join(','),
+          htmlFontSize: 17
+        },
+
+        shape: {
+          borderRadius: 3
+        },
+        props: {
+          MuiButton: {
+            variant: 'contained',
+            color: 'primary'
+          },
+          MuiTextField: {
+            variant: 'outlined',
+            fullWidth: true
+          },
+          MuiListItem: {
+            color: '#FFF'
+          }
+        }
+
+  }
+});
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#083796',
+      contrastText: '#fff'
+    },
+    secondary: {
+      main: '#08967D'
+    }
+  },
+  typography: {
+    fontFamily: [
+      'Open Sans',
+      'sans-serif',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"'
+    ].join(','),
+    htmlFontSize: 17
+  },
+
+  shape: {
+    borderRadius: 3
+  },
+  props: {
+    MuiButton: {
+      variant: 'contained',
+      color: 'primary'
+    },
+    MuiTextField: {
+      variant: 'outlined',
+      fullWidth: true
+    },
+    MuiListItem: {
+      color: '#FFF'
+    }
+  }
+}); 
+
+
+
+export default getDesignTokens;
+
+*/
