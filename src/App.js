@@ -1,7 +1,7 @@
 import { SnackbarContextProvider } from '_common/components/Snackbar/context/SnackbarContext';
 import MainRoutes from './main.routes';
-/* import './index.css';
- */
+import './index.css';
+
   import { ColorModeContext } from './theme/context/theme-context';
 import { ThemeProvider } from '@material-ui/core/styles';
 import { useContext } from 'react';

@@ -9,8 +9,9 @@ import { ColorModeContext } from 'theme/context/theme-context';
 
 const HeaderView = ({ toogleSidebarIsOpen }) => {
   const classes = useStyles();
-  const { colorMode, theme } = useContext(ColorModeContext);
 
+  const { colorMode, theme } = useContext(ColorModeContext);
+  
   return (
     <AppBar className={classes.root}>
       <Toolbar>

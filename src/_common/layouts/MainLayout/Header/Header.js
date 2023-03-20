@@ -10,8 +10,6 @@ const Header = () => {
 
   const theme = useTheme()
 
-
-  
   console.log("theme", theme.palette.mode);
   
   const { sidebarIsOpen, setSidebarIsOpen } = useMainContext();
@@ -23,7 +21,7 @@ const Header = () => {
   const handleEscKey = useEscapeKey(toogleSidebarIsOpen, sidebarIsOpen)
   return (
     <>
-      <HeaderView {...{ toogleSidebarIsOpen }} />;
+      <HeaderView {...{ toogleSidebarIsOpen }} />
     </>
   );
 };

@@ -9,7 +9,9 @@ const options = {
   timeZone: 'America/Sao_Paulo'
 };
 
-const formatDateUpdate = (date) => new Intl.DateTimeFormat('default', options).format(date);
-const formatDateCreateAt = (date) => new Intl.DateTimeFormat('pt-BR').format(date);
 
-export { formatDateUpdate, formatDateCreateAt };
+export const formatDateUpdate = (date) => new Intl.DateTimeFormat('default', options).format(new Date(date));
+
+export const formatDateCreatedAt = (date) => new Intl.DateTimeFormat("pt-BR").format(new Date(date));
+
+console.log(formatDateCreatedAt("2022-09-25T21:24:29.855Z"));

@@ -5,10 +5,13 @@ import { useUsersListContext } from '../context/useUsersListContext';
 
 const UsersListTable = () => {
   const [filteredUsers, setFilteredUsers] = useState(null);
+  const [userId, setUserId] = useState(null);
 
-  const { setUsers, search, users, navigatorIsOnline} = useUsersListContext();
+  console.log(userId);
+  
+  const { setUsers, search, users, navigatorIsOnline } = useUsersListContext();
 
-  console.log('render');
+  const handleOnSelectUserId = (id) => console.log(id);
 
   /* Fetch All users from api */
   useEffect(() => {
@@ -31,7 +34,7 @@ const UsersListTable = () => {
     setFilteredUsers(users);
   }, [search, users]);
 
-  return <UsersListTableView users={filteredUsers} {...{navigatorIsOnline}} />;
+  return <UsersListTableView users={filteredUsers} onSelectUserId={setUserId} {...{ navigatorIsOnline }} />;
 };
 
 export default UsersListTable;

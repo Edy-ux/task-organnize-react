@@ -13,16 +13,17 @@ const getDesignTokens = (mode) => ({
         }
       : {
           primary: {
-            main: '#151515'
+            main: '#202123'
           },
           secondary: {
             main:"#202123"
           },
           background: {
-            paper: '#151515'
+            paper: '#151515',
+            toolbar: ""
           },
           drawer: {
-          primary: '#fff'
+           primary: '#fff'
           },
           text: {
             primary: '#fff'
@@ -33,6 +34,9 @@ const getDesignTokens = (mode) => ({
               color: 'primary'
             },
             MuiListItem: {
+              color: '#FFF'
+            },
+            MuiToolbar: {
               color: '#FFF'
             }
       

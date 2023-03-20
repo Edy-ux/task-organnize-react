@@ -1,12 +1,11 @@
 .app {
-    color: #3b4045;
-  overflow-y: scroll;
-/*   background: #1f1f1f;  
- */  min-height: 100vh;
+  color: #3b4045;
+  overflow-y:visible      ;
+
 }
 
 .app::-webkit-scrollbar {
-  width: px;
+  width: 8px;
   height: 8px;
 }
 

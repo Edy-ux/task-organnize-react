@@ -15,14 +15,14 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'space-between',
     borderRadius: 30
+    
 
   },
 
   input: {
     paddingLeft: '0.99rem',
     width: '100%',
-    borderRadius: 30
-
+    borderRadius: 30,
   },
   wraperIcons: {
     display: 'flex',
@@ -36,8 +36,7 @@ const useStyles = makeStyles((theme) => ({
 
   focused: {
     outline: 'none',
-    boxShadow: '0px 0px 1px #767676, 0px 0px 1px #3f3f3f, 0px 0px 2px #0b0b0b',
-
+    boxShadow: '0px 0px 1px #767676, 0px 0px 2px #3f3f3f, 0px 0px 1px #0b0b0b',
   }
 }));
 

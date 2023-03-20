@@ -13,7 +13,7 @@ const ProviderColorMode = memo(({ children }) => {
     () => ({
       toggleColorMode: () => {
         setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
-      }
+      } 
     }),
     []
   );

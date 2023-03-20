@@ -10,7 +10,7 @@ import AssignmentOutlinedIcon from '@material-ui/icons/AssignmentOutlined';
 const menu = [
   {
     text: 'Dashboard',
-    icon: <DashboardOutlinedIcon />,
+    icon: <DashboardOutlinedIcon vIdeographic={true}/>,
     path: '/dashboard'
   },
   {

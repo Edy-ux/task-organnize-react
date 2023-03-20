@@ -12,14 +12,15 @@ import  Grid  from '@material-ui/core/Grid';
 import { TextField } from '@material-ui/core';
 import {formatDateUpdate} from '_common/utils/formaDate';
 
-const UserDialogView = ( {form, handleOnClose })  => {
+const UserDialogView = ( {form, handleDialog, userDialog })  => {
   const classes = useStyles();
   const theme = useTheme();
+  
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
   
   return (
     <>
-     <Dialog fullWidth maxWidth="xs"  open onClose={handleOnClose} {...{ fullScreen }}>
+     <Dialog fullWidth maxWidth="xs" open={userDialog} >
       <DialogTitle>{form.values._id ? 'Editar' : 'Novo'} Usuário</DialogTitle>
       <form onSubmit={form.handleSubmit} noValidate autoComplete="off">
         <DialogContent dividers>
@@ -66,7 +67,7 @@ const UserDialogView = ( {form, handleOnClose })  => {
           </Grid>
         </DialogContent>
         <DialogActions>
-          <Button color="default" onClick={handleOnClose}>
+          <Button color="default" onClick={handleDialog}>
             Cancelar
           </Button>
           <Button autoFocus type="submit" disabled={form?.isSubmitting}>

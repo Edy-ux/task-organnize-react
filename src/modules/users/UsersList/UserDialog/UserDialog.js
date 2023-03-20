@@ -2,48 +2,48 @@ import { useFormik } from 'formik';
 import UserDialogView from './UserDialogView';
 import UserService from 'modules/users/services/user.services';
 import useSnackbar from '_common/hooks/useSnackbar';
-import {useUsersListContext} from 'modules/users/UsersList/context/useUsersListContext';
+import { useUsersListContext } from 'modules/users/UsersList/context/useUsersListContext';
 import Yup from '_common/utils/yupValidator';
 
+
+const validationSchema = Yup.object().shape({
+  name: Yup.string().max(50).required(),
+  email: Yup.string().email().required(),
+  password: Yup.string()
+  
+  /* check if the user already exists and does not require a password, if there is no password it is required.*/
+    .max(30)
+    .when('_id', {
+      is: (_id) => !!_id, 
+      then: Yup.string(),
+      otherwise: Yup.string().required()  
+    })
+});
+
+const initialuser = {
+  name: '',
+  email: '',
+  password: ''
+};
 
 const UserDialog = () => {
   const { setUsers, setUserDialog, userDialog } = useUsersListContext();
 
   const { snackbar, snackbarSuccess } = useSnackbar();
 
-  const handleOnClose = () => setUserDialog({ open: false });
+  const handleDialog = () => setUserDialog({ open: false });
 
-  const validationSchema = Yup.object().shape({
-    name: Yup.string().max(50).required(),
-    email: Yup.string().email().required(),
-    password: Yup.string()
-      .max(30)
-      .when('_id', {
-        is: (_id) => !!_id,
-        then: Yup.string(),
-        otherwise: Yup.string().required()
-      })
-  });
-
-  const initialValues = {
-    name: '',
-    email: '',
-    password: ''
-  };
-
-  const onSubmit = async (values, { setSubmitting }) => {
+  const onSubmit = async (user, { setSubmitting }) => {
     try {
-      if (values._id) {
-        await UserService.put(values);
-        updateUsersContext(values);
+      if (user._id) {
+        await UserService.put(user);
+        updateUsersContext(user);
       } else {
-        const {
-          data: { body }
-        } = await UserService.post(values);
+        const {data: { body }} = await UserService.post(user);
         updateUsersContext(body, true);
       }
 
-      handleOnClose();  
+      handleDialog();
       snackbarSuccess();
     } catch ({ response: { data } }) {
       snackbar(data.message);
@@ -62,11 +62,11 @@ const UserDialog = () => {
 
   const form = useFormik({
     validationSchema,
-    initialValues: userDialog.user || initialValues,
+    initialuser: userDialog.user || initialuser,
     onSubmit
   });
 
-  return <UserDialogView {...{ form, handleOnClose }} />;
+  return <UserDialogView {...{ form, handleDialog, userDialog }} />;
 };
 
 export default UserDialog;
