@@ -1,9 +1,9 @@
 
 import useStyles from './TasksListTableStyle';
 
-const TasksListTableView = () => {
+const TasksTableView = () => {
   const classes = useStyles()
   return <>TasksListTableView</>;
 };
 
-export default TasksListTableView;
+export default TasksTableView;

@@ -1,7 +1,7 @@
 import { memo, useEffect, useState } from 'react';
 import useDebounce from '_common/hooks/useDebounce';
-import { useUsersListContext } from '../context/useUsersListContext';
-import UsersListFilterView from './UsersListFilterView';
+import { useUsersContext } from '../context/UsersContext';
+import UsersFilterView from './UsersFilterView';
 
 const UsersListFilter = memo(() => {
 
@@ -15,8 +15,8 @@ const UsersListFilter = memo(() => {
     setIsFocused(false);
   };
 
-
-  const { setSearch } = useUsersListContext();
+  
+  const { setSearch } = useUsersContext();
 
   const [searchTerm, setSerachTerm] = useState('');
 
@@ -29,7 +29,7 @@ const UsersListFilter = memo(() => {
     setSearch(debouncedSearchTerm);
   }, [debouncedSearchTerm, setSearch]);
 
-  return <UsersListFilterView {...{ handleChangeSearchTerm, searchTerm, handleFocus, handleBlur, isFocused}} />;
+  return <UsersFilterView {...{ handleChangeSearchTerm, searchTerm, handleFocus, handleBlur, isFocused}} />;
 });
 
 export default UsersListFilter;

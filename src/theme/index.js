@@ -20,7 +20,7 @@ const getDesignTokens = (mode) => ({
           },
           background: {
             paper: '#151515',
-            toolbar: ""
+            toolbar:  '#151515',
           },
           drawer: {
            primary: '#fff'

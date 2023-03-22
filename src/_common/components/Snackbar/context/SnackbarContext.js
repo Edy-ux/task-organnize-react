@@ -1,19 +1,27 @@
-import { createContext, memo, useState } from 'react';
+import { createContext, memo, useState, useContext } from 'react';
+import useSnackbar from '_common/hooks/useSnackbar';
 
-export const SnackbarContext = createContext(null);
+const SnackbarContext = createContext(null);
 SnackbarContext.displayName = 'SnackbarContext';
+
 
 export const SnackbarContextProvider = memo(({ children }) => {
   
-  const [snackbarState, setSnackbarState] = useState({ open: false, message : 'Operação efetuada com sucesso!'});
-
+  const [snackbarState, setSnackbarState] = useState({ open: false});
   return (
     <SnackbarContext.Provider
       value={{
         snackbarState,
-        setSnackbarState
+        setSnackbarState,
+    
       }}>
       {children}
     </SnackbarContext.Provider>
   );
 });
+
+
+/* Hooks for anywhere want use */
+const useSnackbarContext = () => useContext(SnackbarContext);
+
+export default useSnackbarContext;

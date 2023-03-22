@@ -1,4 +1,4 @@
-import useStyles from './UsersListFilterStyle';
+import useStyles from './UsersFilterStyle';
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -7,13 +7,14 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 
-const UsersListFilterView = ({ handleChangeSearchTerm, searchTerm, isFocused, handleFocus, handleBlur }) => {
+const UsersFilterView = ({ handleChangeSearchTerm, searchTerm, isFocused, handleFocus, handleBlur }) => {
   const classes = useStyles();
 
   return (
     <div className={classes.container}>
       <Paper component="div" className={`${classes.paper} ${isFocused ? classes.focused : ''}`}>
         <InputBase
+        autoComplete="off"
           defaultValue={searchTerm}
           onChange={handleChangeSearchTerm}
           className={`${classes.input}`}
@@ -33,4 +34,4 @@ const UsersListFilterView = ({ handleChangeSearchTerm, searchTerm, isFocused, ha
   );
 };
 
-export default UsersListFilterView;
+export default UsersFilterView;

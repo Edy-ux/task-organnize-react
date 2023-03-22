@@ -5,11 +5,9 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
-
-
-const ConfirmationDialogView = ({open, handleClose, title, text, handleConfirmation }) => {
+export default function ConfirmationDialogView({title, text, handleClose, handleDeleteConfirmation }) {
   return (
-    <Dialog open={open} onClose={handleClose} maxWidth="sm" fullWidth>
+    <Dialog open onClose={handleClose} maxWidth="sm" fullWidth>
       <DialogTitle>{title}</DialogTitle>
       <DialogContent dividers>
         <DialogContentText>{text}</DialogContentText>
@@ -18,12 +16,10 @@ const ConfirmationDialogView = ({open, handleClose, title, text, handleConfirmat
         <Button onClick={handleClose} color="default">
           Cancelar
         </Button>
-        <Button onClick={handleConfirmation} color="primary" autoFocus>
+        <Button onClick={handleDeleteConfirmation} color="primary" autoFocus>
           Confirmar
         </Button>
       </DialogActions>
     </Dialog>
   );
-};
-
-export default ConfirmationDialogView;
+}

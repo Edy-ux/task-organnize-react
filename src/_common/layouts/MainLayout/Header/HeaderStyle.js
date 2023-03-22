@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
     }),
-     background:  `${theme.palette.mode === "light"  ?  `linear-gradient(5deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})` : "#202123" }`
+     background:  `linear-gradient(5deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`
   },
   menuButton: {
     marginRight: theme.spacing(2)

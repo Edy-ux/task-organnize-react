@@ -3,33 +3,31 @@ import { useContext, createContext, memo, useState } from 'react';
 const UsersListContext = createContext({});
 UsersListContext.displayName = 'UsersListContext';
 
-export const useUsersListContext = () => {
+export const useUsersContext = () => {
   return useContext(UsersListContext);
 };
 
-
-export const useProviderUsersList = () => {
+export const useProviderUsers = () => {
   const [users, setUsers] = useState(null);
   const [search, setSearch] = useState('');
-  const [userDialog, setUserDialog] = useState({ open: false });
-  const navigatorIsOnline = navigator.onLine
-
+  const [userDialogState, setUserDialog] = useState({ open: false});
+  const navigatorIsOnline = navigator.onLine;
 
   return {
     users,
     setUsers,
     search,
     setSearch,
-    userDialog,
+    userDialogState,
     setUserDialog,
     navigatorIsOnline
   };
 };
 
-function ProviderUsersList({ children }) {
-  const context = useProviderUsersList();
 
+function ProviderUsersContext({ children }) {
+  const context = useProviderUsers();
   return <UsersListContext.Provider value={context}>{children}</UsersListContext.Provider>;
 }
 
-export default memo(ProviderUsersList);
+export default memo(ProviderUsersContext);

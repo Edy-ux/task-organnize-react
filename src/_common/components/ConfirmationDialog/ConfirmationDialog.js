@@ -1,18 +1,20 @@
 import { useState } from 'react';
 import ConfirmationDialogView from './ConfirmationDialogView';
 
-const ConfirmationDialog = ({ title, text, handleConfirmation }) => {
-
-  const [open, setOpen] = useState(true)
-
-  const handleClose = (event, reason) => {
+const ConfirmationDialog = ({title, text, handleDeleteConfirmation, handleClose}) => {
+ /*  const handleClose = (event, reason) => {
+    setConfirmationDialogIsOpen(false);
     if (reason === 'clickaway') {
-      setOpen(false);
-      return
+      setConfirmationDialogIsOpen(false);
+      setUserId(null)
+      return;
     }
-    setOpen(false);
-  };
-  return <ConfirmationDialogView {...{ open, title, text, handleClose, handleConfirmation }} />;
+    setConfirmationDialogIsOpen(false);
+  }; */
+
+
+  
+  return <ConfirmationDialogView {...{ handleDeleteConfirmation, title, text, handleClose}} />;
 };
 
 export default ConfirmationDialog;

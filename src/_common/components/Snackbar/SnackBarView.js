@@ -1,8 +1,6 @@
-import * as React from 'react';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import useStyles from './SnackBarStyle';
-import Button from '@material-ui/core/Button';
 
 
 function Alert(props) {

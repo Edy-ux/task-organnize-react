@@ -1,7 +1,6 @@
-import useSnackbarContext from '_common/components/Snackbar/context/useSnackbarContext';
+import useSnackbarContext from '_common/components/Snackbar/context/SnackbarContext';
 
 const useSnackbar = () => {
-
 
   const { setSnackbarState} = useSnackbarContext();
    
