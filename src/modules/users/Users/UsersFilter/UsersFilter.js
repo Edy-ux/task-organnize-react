@@ -1,35 +1,32 @@
-import { memo, useEffect, useState } from 'react';
+import { memo, useCallback, useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setSearchTerm } from '_common/features/users/userSlice';
 import useDebounce from '_common/hooks/useDebounce';
 import { useUsersContext } from '../context/UsersContext';
 import UsersFilterView from './UsersFilterView';
 
 const UsersListFilter = memo(() => {
-
   const [isFocused, setIsFocused] = useState(false);
+  const dispatch = useDispatch();
 
-  const handleFocus = () => {
-    setIsFocused(true);
-  };
+  const handleFocus = () => setIsFocused(true);
 
-  const handleBlur = () => {
-    setIsFocused(false);
-  };
+  const handleBlur = () => setIsFocused(false);
 
-  
-  const { setSearch } = useUsersContext();
+  // const { setSearchTerm, searchTerm } = useUsersContext();
 
-  const [searchTerm, setSerachTerm] = useState('');
+  const [search, setSearch] = useState('');
 
   //useDebounce async code
-  const debouncedSearchTerm = useDebounce(searchTerm);
+  const debouncedSearchTerm = useDebounce(search);
 
-  const handleChangeSearchTerm = (e) => setSerachTerm(e.target.value.trim().toLowerCase());
+  const handleChangeSearch = (e) => setSearch(e.target.value.trim().toLowerCase());
 
   useEffect(() => {
-    setSearch(debouncedSearchTerm);
-  }, [debouncedSearchTerm, setSearch]);
+    dispatch(setSearchTerm(debouncedSearchTerm));
+  }, [debouncedSearchTerm, dispatch]);
 
-  return <UsersFilterView {...{ handleChangeSearchTerm, searchTerm, handleFocus, handleBlur, isFocused}} />;
+  return <UsersFilterView {...{ handleChangeSearch, search, handleFocus, handleBlur, isFocused }} />;
 });
 
 export default UsersListFilter;

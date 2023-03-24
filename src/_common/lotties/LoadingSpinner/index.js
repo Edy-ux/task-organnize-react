@@ -9,7 +9,7 @@ const LoadingSpinner = () => {
   };
 
   return (
-    <div style={{ padding: '100px 0' }}>
+    <div style={{ padding: '100px 0'}}>
       <Lottie options={defaultOptions} height={200} width={200} />
     </div>
   );

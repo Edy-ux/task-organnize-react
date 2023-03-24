@@ -1,75 +1,67 @@
-import { useCallback, useEffect, useReducer, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+
 import UsersTableView from './UsersTableView';
+
 import UserService from '../../services/user.services';
+
 import { useUsersContext } from '../context/UsersContext';
+
 import useSnackbar from '_common/hooks/useSnackbar';
+/* import useReducer from '_common/hooks/useReducer';*/
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchUsers, removeUser, selectTotalUsers, selectAllUsers } from '_common/features/users/userSlice';
 
 const UsersTable = () => {
-  const [filteredUsers, setFilteredUsers] = useState(null);
-  const [confirmationDialogIsOpen, setConfirmationDialogIsOpen] = useState(false);
-  const { setUsers, search, users, navigatorIsOnline, setUserDialog } = useUsersContext();
-  const { snackbar, snackbarSuccess } = useSnackbar();
-  const [userDelete, setUserDelete] = useReducer((prev, payload) =>users.find((user) => user._id === payload._id),[])
-  
+  const [usersFiltered, setUsersFiltered] = useState(null);
+  const [userDelete, setUserDelete] = useState(null);
+  const users = useSelector(selectAllUsers);
+  const { loading, error, searchTerm } = useSelector((state) => state.users);
+  console.log('renderizou',  users);
+  const dispatch = useDispatch();
+  const { navigatorIsOnline, setUserDialog } = useUsersContext();
 
-  console.log(userDelete);
+  const handleOnOpenDialog = useCallback(() => setUserDialog(), [setUserDialog]);
 
-  //Fetch All users from api
-  useEffect(() => {
-    const getUsers = async () => {
-      const {
-        data: { body }
-      } = await UserService.getAll();
-      setUsers(body);
-    };
-    getUsers();
-  }, [setUsers]);
+  const { snackbar } = useSnackbar();
 
-  // Set filteredUsers if state search is not a string empty. Otherwise set with users data from api
+  // Set users if searchTerm is not a string empty. Otherwise set users with data from api
 
   useEffect(() => {
-    if (search) {
-      const usersFiltered = users?.filter((user) => user.name.toLowerCase().includes(search) || user.email.toLowerCase().includes(search));
-      setFilteredUsers(usersFiltered);
+    if (searchTerm) {
+      const result = users.filter((user) => user.name.toLowerCase().includes(searchTerm) || user.email.toLowerCase().includes(searchTerm));
+      setUsersFiltered(result);
       return;
     }
-    setFilteredUsers(users);
-  }, [search, users]);
+    setUsersFiltered(users);
+  }, [searchTerm, users]);
 
-  const handleEdit = useCallback((user) => setUserDialog({ open: true, user }), [setUserDialog]);
+  const handleEdit = (user) => setUserDialog({ open: true, user });
 
   const handleDeleteConfirmation = async () => {
-    console.log('deleted');
     try {
-      await UserService.remove(userDelete._id);
-      setUsers((prevUsers) => prevUsers.filter((user) => user._id !== userDelete._id));
-      snackbar("Usuário deletado")
+      UserService.remove(userDelete._id);
+      dispatch(removeUser(userDelete._id));
+      snackbar('Usuário deletado');
     } catch ({ response: { data } }) {
       snackbar(data.message);
     } finally {
-      setUserDelete([]);
+      setUserDelete(null);
     }
   };
 
-  const handleOnSelectUserId = useCallback(
-    (id) => {
-      return () => setUserDelete(id);
-    },
-    [setUserDelete]
-  );
-
-  const handleClose = () => setUserDelete([]);
+  const handleOnSelectUser = (user) => () => setUserDelete(user);
+  const handleClose = () => setUserDelete(null);
 
   return (
     <UsersTableView
-      users={filteredUsers}
+      users={usersFiltered}
       {...{
+        loading,
+        error,
         navigatorIsOnline,
         handleEdit,
-        setUserDelete,
-        handleOnSelectUserId,
-        confirmationDialogIsOpen,
         userDelete,
+        handleOnSelectUser,
         handleDeleteConfirmation,
         handleClose
       }}

@@ -5,6 +5,8 @@ import Yup from '_common/utils/yupValidator';
 import useSnackbarContext from '_common/components/Snackbar/context/SnackbarContext';
 import { useUsersContext } from '../context/UsersContext';
 import useSnackbar from '_common/hooks/useSnackbar';
+import { useDispatch } from 'react-redux';
+import { addUser, updateUser } from '_common/features/users/userSlice';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().max(50).required(),
@@ -21,10 +23,10 @@ const validationSchema = Yup.object().shape({
 
 const UserDialog = () => {
   const { setUsers, setUserDialog, userDialogState } = useUsersContext();
-
   const { snackbar, snackbarSuccess } = useSnackbar();
   const { snackbarState, setSnackbarState } = useSnackbarContext();
   const handleOnCloseDialog = () => setUserDialog({ open: false });
+  const dispatch = useDispatch()
 
   const initialValues = {
     name: '',
@@ -35,11 +37,13 @@ const UserDialog = () => {
   const onSubmit = async (payload, { setSubmitting }) => {
     try {
       if (payload._id) {
+       console.log('renderizou',  payload._id);
+
         await UserService.put(payload);
-        setUsers((prevUsers) => prevUsers.map((user) => (user._id === payload._id ? payload : user)));
+        dispatch(updateUser(payload))
       } else {
         const {data: { body: userResponse }} = await UserService.post(payload);
-        setUsers((prevUsers) => [...prevUsers, userResponse]);
+        dispatch(addUser(userResponse))
         snackbar("Usuário cadastrado")
       }
       handleOnCloseDialog();

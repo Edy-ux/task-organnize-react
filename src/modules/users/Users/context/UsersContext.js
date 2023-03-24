@@ -8,16 +8,13 @@ export const useUsersContext = () => {
 };
 
 export const useProviderUsers = () => {
-  const [users, setUsers] = useState(null);
-  const [search, setSearch] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
   const [userDialogState, setUserDialog] = useState({ open: false});
   const navigatorIsOnline = navigator.onLine;
 
   return {
-    users,
-    setUsers,
-    search,
-    setSearch,
+    searchTerm,
+    setSearchTerm,
     userDialogState,
     setUserDialog,
     navigatorIsOnline

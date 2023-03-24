@@ -20,53 +20,51 @@ import { memo, useCallback } from 'react';
 import ConfirmationDialog from '_common/components/ConfirmationDialog';
 
 const UsersTableView = memo(
-  ({ setUserDeleteId, handleClose, users, navigatorIsOnline, handleOnSelectUserId, handleEdit, userDelete, handleDeleteConfirmation }) => {
+  ({ error, isLoading, handleClose, users, navigatorIsOnline, handleOnSelectUser, handleEdit, userDelete, handleDeleteConfirmation }) => {
     const classes = useStyles();
-
-    console.log('render');
     return (
       <TableContainer component={Paper} className={classes.root}>
         <Table className={classes.table} size="small" aria-label="a dense table">
           <TableHead>
             <TableRow>
-              {users && (
-                <>
-                  <TableCell>Nome</TableCell>
-                  <TableCell>Email</TableCell>
-                  <TableCell>Data Criação</TableCell>
-                  <TableCell width={200} align="center">
-                    Ações
-                  </TableCell>
-                </>
-              )}
+              <TableCell>Nome</TableCell>
+              <TableCell>Email</TableCell>
+              <TableCell>Data Criação</TableCell>
+              <TableCell width={200} align="center">
+                 Ações
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody className={classes.tbody}>
-            {users?.map((user) => {
-              const { creation, _id, email, name } = user;
-
-              return (
-                <TableRow key={_id} hover>
-                  <TableCell component="th" scope="row">
-                    {name}
-                  </TableCell>
-                  <TableCell>{email}</TableCell>
-                  <TableCell>{FormatDate.formatDateCreatedAt(creation)}</TableCell>
-                  <TableCell align="center">
-                    <Grid>
-                      <EditIcon cursor="pointer" onClick={() => handleEdit(user)} />
-                      <DeleteIcon cursor="pointer" onClick={handleOnSelectUserId({_id})} />
-                    </Grid>
-                  </TableCell>
-                </TableRow>
-              );
-            })}
+            {error ? (
+              <center>
+                <>Ops! Ocorreu um error</>
+              </center>
+            ) : (
+              users?.map((user) => {
+                const { creation, _id, email, name } = user;
+                return (
+                  <TableRow key={_id} hover>
+                    <TableCell component="th" scope="row">
+                      {name}
+                    </TableCell>
+                    <TableCell>{email}</TableCell>
+                    <TableCell>{FormatDate.formatDateCreatedAt(creation)}</TableCell>
+                    <TableCell align="center">
+                      <Grid>
+                        <EditIcon cursor="pointer" onClick={() => handleEdit(user)} />
+                        <DeleteIcon cursor="pointer" onClick={handleOnSelectUser(user)} />
+                      </Grid>
+                    </TableCell>
+                  </TableRow>
+                );
+              })
+            )}
           </TableBody>
         </Table>
-        {!users && navigatorIsOnline && <LoadingSpinner />}
-        {users && !users?.length && <EmptyBox />}
-        {!users && !navigatorIsOnline && <NetworkFailed />}
-        {userDelete?._id  && (
+        {isLoading && <LoadingSpinner/>}
+        {users && !users.length && <EmptyBox />}
+        {userDelete && (
           <ConfirmationDialog
             title={`Deseja deletar o usuário ${userDelete.name}? `}
             text={'Depois de exclúido a ação não poderá ser desfeita'}

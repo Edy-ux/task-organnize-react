@@ -7,23 +7,23 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 
-const UsersFilterView = ({ handleChangeSearchTerm, searchTerm, isFocused, handleFocus, handleBlur }) => {
+const UsersFilterView = ({ handleChangeSearch, search, isFocused, handleFocus, handleBlur }) => {
   const classes = useStyles();
 
+ 
   return (
     <div className={classes.container}>
       <Paper component="div" className={`${classes.paper} ${isFocused ? classes.focused : ''}`}>
         <InputBase
-        autoComplete="off"
-          defaultValue={searchTerm}
-          onChange={handleChangeSearchTerm}
+          autoComplete="off"
+          onChange={handleChangeSearch}
           className={`${classes.input}`}
           onFocus={handleFocus}
           onBlur={handleBlur}
           placeholder="Pesquise por nome ou email"
           inputProps={{ 'aria-label': 'search users' }}
         />
-        <div className={classes.wraperIcons}>
+        <div className={classes.wrapperIcons}>
           <Divider style={{ height: 28 }} orientation="vertical" />
           <IconButton type="button" aria-label="search">
             <SearchIcon className={classes.searchIcon} />

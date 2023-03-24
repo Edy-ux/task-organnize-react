@@ -21,6 +21,7 @@ const getDesignTokens = (mode) => ({
           background: {
             paper: '#151515',
             toolbar:  '#151515',
+            drawer: "#202123"
           },
           drawer: {
            primary: '#fff'

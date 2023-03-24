@@ -6,22 +6,20 @@ import HeaderView from './HeaderView';
 const KEY_NAME_ESC = 'Escape';
 const KEY_EVENT_TYPE = 'keydown';
 
-const Header = () => {  
+const Header = () => {
+  const theme = useTheme();
 
-  const theme = useTheme()
+  console.log('theme', theme.palette.mode);
 
-  console.log("theme", theme.palette.mode);
-  
   const { sidebarIsOpen, setSidebarIsOpen } = useMainContext();
 
-  const toogleSidebarIsOpen = _ => {
-    setSidebarIsOpen((isOpen) => !isOpen)
-  
+  const toggleSidebarIsOpen = (_) => {
+    setSidebarIsOpen((isOpen) => !isOpen);
   };
-  const handleEscKey = useEscapeKey(toogleSidebarIsOpen, sidebarIsOpen)
+  const handleEscKey = useEscapeKey(toggleSidebarIsOpen, sidebarIsOpen);
   return (
     <>
-      <HeaderView {...{ toogleSidebarIsOpen }} />
+      <HeaderView {...{ toggleSidebarIsOpen }} />
     </>
   );
 };

@@ -5,19 +5,17 @@ import { useMainContext } from './context/useMainContext';
 import Header from './Header';
 import SideBar from './SideBar';
 
-
-
 const useStyles = makeStyles((theme) => ({
   main: {
     padding: theme.spacing(3, 3),
     minHeight: "100vh",
-    flex: 1,
+   
     marginLeft: theme.spacing(8),
     color: theme.palette.mode  === "light" ? "#3b4045" : "#FFF",
     marginTop: theme.spacing(5),
     [theme.breakpoints.up('md')]: {
       marginTop: theme.spacing(8),
-      marginLeft: ({ sidebarIsOpen }) => theme.spacing(sidebarIsOpen ? 30 : 8),
+      marginLeft: ({ sidebarIsOpen }) => theme.spacing(sidebarIsOpen ? 26 : 8),
       
     },
     transition: theme.transitions.create('margin-left', {

@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     borderRadius: 30,
   },
-  wraperIcons: {
+  wrapperIcons: {
     display: 'flex',
     alignItems: 'center'
   },

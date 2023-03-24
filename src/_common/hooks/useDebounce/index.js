@@ -10,7 +10,6 @@ const useDebounce = (value, delay = 600) => {
       setDebouncedValue(value);
     }, delay);
 
-
     return () => {
      clearTimeout(handler);
     };
