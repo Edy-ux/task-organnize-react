@@ -5,9 +5,10 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     marginBottom: theme.spacing(2),
     display: 'flex',
-    alignwItems: 'center',
+    alignItems: 'center',
     width: '50%',
-    height: "3.8rem",
+    justifyContent: "center",
+    height: "3.3rem",
   },
   input: {
     marginLeft: theme.spacing(1),

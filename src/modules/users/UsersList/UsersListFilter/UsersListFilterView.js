@@ -15,17 +15,13 @@ const UsersListFilterView = ({ handleChangeSearchTerm }) => {
     <Paper component="form" className={classes.root}>
       <InputBase
         className={classes.input}
-        placeholder="Procure por nome ou email do usuário"
+        placeholder="Pesquise por nome ou email"
         inputProps={{ 'aria-label': 'search google maps' }}
       />
       <Divider className={classes.divider} orientation="vertical" />
-      <IconButton type="search" className={classes.iconButton} aria-label="search">
+      <IconButton type="submit" className={classes.iconButton} aria-label="search">
         <SearchIcon />
       </IconButton>
-
-      {/*   <IconButton color="primary" className={classes.iconButton} aria-label="directions">
-          <DirectionsIcon />
-        </IconButton> */}
     </Paper>
   );
 };
