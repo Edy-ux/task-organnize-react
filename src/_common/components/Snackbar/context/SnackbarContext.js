@@ -1,5 +1,4 @@
 import { createContext, memo, useState, useContext } from 'react';
-import useSnackbar from '_common/hooks/useSnackbar';
 
 const SnackbarContext = createContext(null);
 SnackbarContext.displayName = 'SnackbarContext';

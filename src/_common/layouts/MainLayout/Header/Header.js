@@ -9,8 +9,6 @@ const KEY_EVENT_TYPE = 'keydown';
 const Header = () => {
   const theme = useTheme();
 
-  console.log('theme', theme.palette.mode);
-
   const { sidebarIsOpen, setSidebarIsOpen } = useMainContext();
 
   const toggleSidebarIsOpen = (_) => {

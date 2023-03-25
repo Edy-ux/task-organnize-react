@@ -41,7 +41,6 @@ const menu = [
   }
 ];
 
-
 export const MainLayoutContext = createContext({});
 MainLayoutContext.displayName = 'MainLayoutContext';
 

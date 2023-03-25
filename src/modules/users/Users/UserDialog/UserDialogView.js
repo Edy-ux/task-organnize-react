@@ -13,9 +13,7 @@ import FormatDate from '_common/utils/formatDate';
 
 const UserDialogView = ({ formik, handleOnCloseDialog }) => {
   const classes = useStyles();
-
   const theme = useTheme();
-
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (

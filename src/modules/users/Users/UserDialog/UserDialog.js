@@ -2,11 +2,10 @@ import { useFormik } from 'formik';
 import UserDialogView from './UserDialogView';
 import UserService from 'modules/users/services/user.services';
 import Yup from '_common/utils/yupValidator';
-import useSnackbarContext from '_common/components/Snackbar/context/SnackbarContext';
-import { useUsersContext } from '../context/UsersContext';
 import useSnackbar from '_common/hooks/useSnackbar';
-import { useDispatch } from 'react-redux';
-import { addUser, updateUser } from '_common/features/users/userSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { addUser, updateUser } from '_common/features/users/usersSlice';
+import { modalSelector, setUserDialogState, userDialogToggle } from '_common/features/modal/modalSlice';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().max(50).required(),
@@ -22,41 +21,44 @@ const validationSchema = Yup.object().shape({
 });
 
 const UserDialog = () => {
-  const { setUsers, setUserDialog, userDialogState } = useUsersContext();
+  
   const { snackbar, snackbarSuccess } = useSnackbar();
-  const { snackbarState, setSnackbarState } = useSnackbarContext();
-  const handleOnCloseDialog = () => setUserDialog({ open: false });
-  const dispatch = useDispatch()
+  const { userDialogState } = useSelector(modalSelector);
+  const dispatch = useDispatch();
 
   const initialValues = {
     name: '',
     email: '',
     password: ''
   };
+  const handleOnCloseDialog = () => {
+    dispatch(userDialogToggle());
+    dispatch(setUserDialogState(null));
+  };
 
-  const onSubmit = async (payload, { setSubmitting }) => {
+  const onSubmit = async (values, { setSubmitting }) => {
     try {
-      if (payload._id) {
-       console.log('renderizou',  payload._id);
-
-        await UserService.put(payload);
-        dispatch(updateUser(payload))
+      if (values._id) {
+        dispatch(updateUser({ id: values._id, changes: { ...values } }));
+        snackbarSuccess();
       } else {
-        const {data: { body: userResponse }} = await UserService.post(payload);
-        dispatch(addUser(userResponse))
-        snackbar("Usuário cadastrado")
+        const {
+          data: { body }
+        } = await UserService.post(values);
+        dispatch(addUser(body));
+        snackbar('Usuário cadastrado');
       }
-      handleOnCloseDialog();
     } catch ({ response: { data } }) {
       snackbar(data.message);
     } finally {
       setSubmitting(false);
+      handleOnCloseDialog();
     }
   };
 
   const formik = useFormik({
     validationSchema,
-    initialValues: userDialogState?.user || initialValues,
+    initialValues: userDialogState || initialValues,
     onSubmit
   });
 

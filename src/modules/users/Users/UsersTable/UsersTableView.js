@@ -1,4 +1,3 @@
-/* Marerial-ui */
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -13,15 +12,25 @@ import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 //Components
-import NetworkFailed from '_common/lotties/NetworkFailed';
-import { Grid, useTheme } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import FormatDate from '_common/utils/formatDate';
-import { memo, useCallback } from 'react';
 import ConfirmationDialog from '_common/components/ConfirmationDialog';
+import { memo } from 'react';
 
 const UsersTableView = memo(
-  ({ error, isLoading, handleClose, users, navigatorIsOnline, handleOnSelectUser, handleEdit, userDelete, handleDeleteConfirmation }) => {
+  ({
+    error,
+    loading,
+    handleCloseConfirmation,
+    users,
+    handleSelectUserDelete = (f) => f,
+    handleEdit,
+    confirmationDialogIsOpen,
+    userDialogState,
+    handleDeleteConfirmation
+  }) => {
     const classes = useStyles();
+
     return (
       <TableContainer component={Paper} className={classes.root}>
         <Table className={classes.table} size="small" aria-label="a dense table">
@@ -31,7 +40,7 @@ const UsersTableView = memo(
               <TableCell>Email</TableCell>
               <TableCell>Data Criação</TableCell>
               <TableCell width={200} align="center">
-                 Ações
+                Ações
               </TableCell>
             </TableRow>
           </TableHead>
@@ -53,7 +62,7 @@ const UsersTableView = memo(
                     <TableCell align="center">
                       <Grid>
                         <EditIcon cursor="pointer" onClick={() => handleEdit(user)} />
-                        <DeleteIcon cursor="pointer" onClick={handleOnSelectUser(user)} />
+                        <DeleteIcon cursor="pointer" onClick={handleSelectUserDelete(user)} />
                       </Grid>
                     </TableCell>
                   </TableRow>
@@ -62,13 +71,13 @@ const UsersTableView = memo(
             )}
           </TableBody>
         </Table>
-        {isLoading && <LoadingSpinner/>}
+        {loading && <LoadingSpinner />}
         {users && !users.length && <EmptyBox />}
-        {userDelete && (
+        {confirmationDialogIsOpen && (
           <ConfirmationDialog
-            title={`Deseja deletar o usuário ${userDelete.name}? `}
+            title={`Deseja deletar o usuário ${userDialogState.name}? `}
             text={'Depois de exclúido a ação não poderá ser desfeita'}
-            {...{ handleDeleteConfirmation, handleClose }}
+            {...{ handleDeleteConfirmation, handleCloseConfirmation }}
           />
         )}
       </TableContainer>

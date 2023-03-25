@@ -5,7 +5,7 @@ import './index.css';
 import { ColorModeContext } from './theme/context/theme-context';
 import { ThemeProvider } from '@material-ui/core/styles';
 import { useContext, useEffect } from 'react';
-import { getUsers } from '_common/features/users/userSlice';
+import { getUsers } from '_common/features/users/usersSlice';
 import { useDispatch } from 'react-redux';
 
 export default function App() {
@@ -16,6 +16,7 @@ export default function App() {
   useEffect(() => {
     dispatch(getUsers());
   }, [dispatch]);
+  
   return (
     <div className="app">
       <ThemeProvider {...{ theme }}>

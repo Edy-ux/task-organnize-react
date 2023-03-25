@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk, createEntityAdapter } from '@reduxjs/toolkit';
-
-import UserService, { userAPI } from 'modules/users/services/user.services';
+import UserService from 'modules/users/services/user.services';
 
 export const getUsers = createAsyncThunk('users/getUsers', async (data, thunkApi) => {
   try {
@@ -8,18 +7,23 @@ export const getUsers = createAsyncThunk('users/getUsers', async (data, thunkApi
     const result = await response.data.body;
     return result;
   } catch (error) {
-    return thunkApi.rejectWithValue(error.message);
+    return thunkApi.rejectWithValue(error);
   }
 });
 
-export const remove = createAsyncThunk('users/remove', async (id) => {
+export const remove = createAsyncThunk('users/removeOne', async (id) => {
   await UserService.remove(id);
+});
+
+export const updateUser = createAsyncThunk('users/updateOne', async (arg) => {
+  const response = await UserService.put(arg.changes);
+  return await response.data.body;
 });
 export const usersAdapter = createEntityAdapter({
   // Assume IDs are stored in a field other than `user._id`
-  selectId: (user) => user._id,
+  selectId: (user) => user._id
   // Keep the "all IDs" array sorted based on user name
-  sortComparer: (a, b) => a.name.localeCompare(b.name)
+  // sortComparer: (a, b) => a.name.localeCompare(b.name)
 });
 
 const initialState = usersAdapter.getInitialState({
@@ -34,7 +38,6 @@ const userSlice = createSlice({
   reducers: {
     removeUser: usersAdapter.removeOne,
     addUser: usersAdapter.addOne,
-    updateUser: usersAdapter.updateOne,
     setSearchTerm(state, { payload: filter }) {
       state.searchTerm = filter;
     }
@@ -53,10 +56,16 @@ const userSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     });
+    builder.addCase(updateUser.fulfilled, (state, { payload }) => {
+      const { _id, ...changes } = payload;
+      if (!state.isDisabled) {
+        usersAdapter.updateOne(state, { id: _id, changes });
+      }
+    });
   }
 });
 
-export const { removeUser, addUser, setSearchTerm, updateUser } = userSlice.actions;
+export const { removeUser, addUser, setSearchTerm } = userSlice.actions;
 export default userSlice.reducer;
 
 export const {
