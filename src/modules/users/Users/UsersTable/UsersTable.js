@@ -1,19 +1,23 @@
 import { useEffect, useState } from 'react';
 import UsersTableView from './UsersTableView';
+import { useDispatch, useSelector } from 'react-redux';
+
 import UserService from '../../services/user.services';
 import useSnackbar from '_common/hooks/useSnackbar';
-import { useDispatch, useSelector } from 'react-redux';
+
 import { removeUser, selectAllUsers } from '_common/features/users/usersSlice';
 import { confirmationDialogToggle, modalSelector, setUserDialogState, userDialogToggle } from '_common/features/modal/modalSlice';
 
 const UsersTable = () => {
   const [users, setUsers] = useState(null);
-  const data = useSelector(selectAllUsers);
+  const data = useSelector(selectAllUsers)
   const { loading, error, searchTerm } = useSelector((state) => state.users);
   const { userDialogState, confirmationDialogIsOpen } = useSelector(modalSelector);
   const dispatch = useDispatch();
   const { snackbar } = useSnackbar();
-
+ 
+ console.log(users);
+ 
   // Set users if searchTerm is not a string empty. Otherwise set users with data from api
   useEffect(() => {
     if (searchTerm) {
@@ -36,7 +40,7 @@ const UsersTable = () => {
       dispatch(setUserDialogState(null));
     }
   };
-  const handleSelectUserDelete = (user) => () => {
+  const handleSelectUserDelete = (user) => {
     dispatch(confirmationDialogToggle());
     dispatch(setUserDialogState(user));
   };
@@ -50,7 +54,7 @@ const UsersTable = () => {
     dispatch(userDialogToggle());
     dispatch(setUserDialogState(user));
   };
-  
+ 
   return (
     <UsersTableView
       users={users}
@@ -58,7 +62,6 @@ const UsersTable = () => {
         loading,
         error,
         confirmationDialogIsOpen,
-
         handleEdit,
         userDialogState,
         handleSelectUserDelete,

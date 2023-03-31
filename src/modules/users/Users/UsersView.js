@@ -4,9 +4,8 @@ import UserDialog from './UserDialog';
 import UsersFilter from './UsersFilter';
 import UsersTable from './UsersTable';
 
-const UsersView = ({ handleOpenUserDialog, userDialogIsOpen}) => {
-  
-  const newButton = <Button onClick={handleOpenUserDialog}>Novo</Button>;
+const UsersView = ({ handleNewUser, userDialogIsOpen }) => {
+  const newButton = <Button onClick={handleNewUser}>Novo</Button>;
 
   return (
     <>

@@ -7,6 +7,7 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import { useContext, useEffect } from 'react';
 import { getUsers } from '_common/features/users/usersSlice';
 import { useDispatch } from 'react-redux';
+import { getTasks } from '_common/features/tasks/tasksSlice';
 
 export default function App() {
   const { theme } = useContext(ColorModeContext);
@@ -15,6 +16,7 @@ export default function App() {
 
   useEffect(() => {
     dispatch(getUsers());
+    dispatch(getTasks());
   }, [dispatch]);
   
   return (

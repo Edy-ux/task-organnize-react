@@ -10,7 +10,7 @@ import AssignmentOutlinedIcon from '@material-ui/icons/AssignmentOutlined';
 const menu = [
   {
     text: 'Dashboard',
-    icon: <DashboardOutlinedIcon vIdeographic={true}/>,
+    icon: <DashboardOutlinedIcon vIdeographic={true} />,
     path: '/dashboard'
   },
   {
@@ -47,26 +47,21 @@ MainLayoutContext.displayName = 'MainLayoutContext';
 // Provider component that wraps your app and makes users object ...
 // ... available to any child component that calls useMainContext().
 function ProviderMain({ children }) {
-  const mainContext = useProviderMainLayout();
+  const context = useProviderMainLayout();
 
   return (
     <>
-      <MainLayoutContext.Provider
-         value={mainContext}>
-         {children}
-      </MainLayoutContext.Provider>;
+      <MainLayoutContext.Provider value={context}>{children}</MainLayoutContext.Provider>;
     </>
   );
 }
 export default memo(ProviderMain);
-
 
 // Hook for child components to get the auth object ...
 // ... and re-render when it changes.
 export const useMainContext = () => {
   return useContext(MainLayoutContext);
 };
-
 
 // Provider hook that creates users object and handles state
 function useProviderMainLayout() {

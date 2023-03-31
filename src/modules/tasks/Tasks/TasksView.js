@@ -2,6 +2,8 @@ import { Button } from '@material-ui/core';
 import EmptyBox from '_common/lotties/EmptyBox';
 import PageHeader from '_common/components/PageHeader';
 import TaskDialog from './TaskDialog';
+import TasksFilter from './TasksFilter/TasksFilter';
+import TasksTable from './TaskTable/TasksTable';
 
 const TasksView = ({ taskDialog, handleNew }) => {
   
@@ -10,8 +12,9 @@ const TasksView = ({ taskDialog, handleNew }) => {
   return (
     <>
       <PageHeader title="Tarefas" actionButton={newButton} />
-      <EmptyBox />
-      {taskDialog.open && <TaskDialog />}
+      <TasksFilter/>
+      <TasksTable />
+      {false && <TaskDialog />}
     </>
   );
 };

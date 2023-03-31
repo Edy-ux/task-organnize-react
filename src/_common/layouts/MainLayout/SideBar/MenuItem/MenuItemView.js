@@ -31,8 +31,8 @@ const MenuItemView = ({ text, icon, path, items, handleClick, dropDownIsOpen }) 
           :
           <>
             <Link to="/tarefas" className={classes.linkStyle}>
-              <ListItemIcon>{icon}</ListItemIcon>
-              <ListItemText primary={text} />
+                <ListItemIcon>{icon}</ListItemIcon>
+                <ListItemText primary={text} />
             </Link>
             {(items && (dropDownIsOpen ? <ExpandLessIcon /> : <ExpandMoreIcon />))}
           </>

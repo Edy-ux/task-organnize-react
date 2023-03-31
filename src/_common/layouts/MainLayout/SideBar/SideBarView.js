@@ -12,6 +12,7 @@ const SideBarView = ({ sidebarIsOpen }) => {
   const { dropDownIsOpen, menu } = useMainContext();
   const menuList = useMemo(() => menu, [menu]);
   const classes = useStyles();
+ 
   return (
     <Drawer
       variant="permanent"
@@ -23,7 +24,8 @@ const SideBarView = ({ sidebarIsOpen }) => {
         })
       }}>
       <List>
-        {menuList.map((item, index) => {
+        {menu.map((item, index) => {
+           console.log("i am rendering")
           const { items } = item;
           return (
             <>

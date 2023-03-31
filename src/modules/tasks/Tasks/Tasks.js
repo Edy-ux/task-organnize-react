@@ -5,7 +5,6 @@ const Tasks = () => {
   const { taskDialog, setTaskDialog } = useTasksContext();
 
   const handleNew = () => setTaskDialog({ open: !taskDialog.open});
-
   return (
     <>
       <TasksView {...{ taskDialog, handleNew }} />

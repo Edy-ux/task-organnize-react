@@ -19,6 +19,7 @@ export const updateUser = createAsyncThunk('users/updateOne', async (arg) => {
   const response = await UserService.put(arg.changes);
   return await response.data.body;
 });
+
 export const usersAdapter = createEntityAdapter({
   // Assume IDs are stored in a field other than `user._id`
   selectId: (user) => user._id
@@ -58,9 +59,7 @@ const userSlice = createSlice({
     });
     builder.addCase(updateUser.fulfilled, (state, { payload }) => {
       const { _id, ...changes } = payload;
-      if (!state.isDisabled) {
-        usersAdapter.updateOne(state, { id: _id, changes });
-      }
+      usersAdapter.updateOne(state, { id: _id, changes });
     });
   }
 });
