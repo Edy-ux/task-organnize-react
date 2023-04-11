@@ -1,5 +1,4 @@
-import { useMemo, useCallback, useState } from 'react';
-import { useMainContext } from '../../context/useMain';
+import { useMainContext } from '../../context/useMainContext'
 import MenuItemView from './MenuItemView';
 
 const MenuItem = ({ text, icon, path, items }) => {

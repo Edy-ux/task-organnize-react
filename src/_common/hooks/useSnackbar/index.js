@@ -1,8 +1,7 @@
-import { useContext } from 'react';
-import { SnackbarContext } from '_common/components/Snackbar/context/SnackbarContext';
-import useSnackbarContext from '_common/components/Snackbar/context/useSnackbarContext';
+import useSnackbarContext from '_common/components/Snackbar/context/SnackbarContext';
 
 const useSnackbar = () => {
+
   const { setSnackbarState} = useSnackbarContext();
    
   const snackbar = (message) => setSnackbarState({ open: true, message });

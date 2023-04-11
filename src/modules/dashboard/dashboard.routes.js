@@ -1,23 +1,14 @@
-import { Route, Switch, useRouteMatch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import DashBoard from './DashBoard';
 
 const DashboardRoutes = ({ match: { url } }) => {
-  const { path } = useRouteMatch()
-
   return (
-
     <Switch>
       <Route path={`${url}/`} component={DashBoard} />
     </Switch>
-
   );
 };
 export default DashboardRoutes;
-
-
-
-
-
 
 /* function Topic() {
 

@@ -1,24 +1,25 @@
-import { useCallback, useEffect, useRef } from 'react';
+import { useTheme } from '@material-ui/core';
 import useEscapeKey from '_common/hooks/useEscapeKey';
-import { useMainContext } from '../context/useMain';
+import { useMainContext } from '../context/useMainContext';
 import HeaderView from './HeaderView';
-import { Redirect, useHistory, useLocation, useRouteMatch,} from 'react-router-dom';
 
 const KEY_NAME_ESC = 'Escape';
 const KEY_EVENT_TYPE = 'keydown';
 
-const Header = () => {  
+const Header = () => {
+  const theme = useTheme();
+
+  console.log('theme', theme.palette.mode);
+
   const { sidebarIsOpen, setSidebarIsOpen } = useMainContext();
 
-  const toogleSidebarIsOpen = _ => {
-    setSidebarIsOpen((isOpen) => !isOpen)
-  
+  const toggleSidebarIsOpen = (_) => {
+    setSidebarIsOpen((isOpen) => !isOpen);
   };
-
-  const handleEscKey = useEscapeKey(toogleSidebarIsOpen, sidebarIsOpen)
+  const handleEscKey = useEscapeKey(toggleSidebarIsOpen, sidebarIsOpen);
   return (
     <>
-      <HeaderView {...{ toogleSidebarIsOpen }} />;
+      <HeaderView {...{ toggleSidebarIsOpen }} />
     </>
   );
 };

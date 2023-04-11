@@ -1,15 +1,18 @@
 import { makeStyles } from '@material-ui/core/styles';
 const drawerWidth = 210;
 
+
 const useStyles = makeStyles((theme) => ({
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
     whiteSpace: 'nowrap',
-    marginTop: theme.spacing(6),
+    marginTop: theme.spacing(8),
     [theme.breakpoints.up('md')]: {
       marginTop: theme.spacing(8)
-    }
+    },  
+    background: `${theme.palette.mode === "dark" ? theme.palette.secondary.main : "rgba(18, 18, 18, 0)" }`
+
   },
   drawerOpen: {  
     width: drawerWidth,

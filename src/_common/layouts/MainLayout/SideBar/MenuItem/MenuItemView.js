@@ -1,10 +1,11 @@
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { Link, useLocation } from 'react-router-dom/';
-import { useMainContext } from '../../context/useMain';
+import { Link, useLocation } from 'react-router-dom';
+import { useMainContext } from '../../context/useMainContext';
 import useStyles from './MenuItemStyle';
 
 const MenuItemView = ({ text, icon, path, items, handleClick, dropDownIsOpen }) => {
