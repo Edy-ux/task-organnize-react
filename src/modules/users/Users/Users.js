@@ -1,16 +1,14 @@
-
-
+import { useDispatch, useSelector } from 'react-redux';
+import { modalSelector, userDialogToggle } from '_common/features/modal/modalSlice';
 import UsersView from './UsersView';
-import { useUsersContext } from './context/UsersContext'
 
 const Users = () => {
+  const { userDialogIsOpen } = useSelector(modalSelector);
+  const dispatch = useDispatch();
 
-  const { setUserDialog, userDialogState} = useUsersContext();
-   
-  const handleOpenUserDialog = () => setUserDialog({ open: true });
+  const handleNewUser = () => dispatch(userDialogToggle());
 
-  return <UsersView {...{ userDialogState, handleOpenUserDialog}} />;
+  return <UsersView {...{ userDialogIsOpen, handleNewUser }} />;
 };
 
 export default Users;
-

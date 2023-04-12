@@ -9,6 +9,7 @@ const UsersRoutes = lazy(() => import('modules/users/users.routes'));
 
 const MainRoutes = () => {
   return (
+
     <MainLayoutWrapper>
       <Switch>
         <Route path="/dashboard" component={LazyLoading(DashboardRoutes)} />

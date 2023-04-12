@@ -7,13 +7,13 @@ export const ColorModeContext = createContext({ toggleColorMode: (f) => f });
 ColorModeContext.displayName = 'ColorModeContext';
 
 const ProviderColorMode = memo(({ children }) => {
-  const [mode, setMode] = useState('dark');
+  const [mode, setMode] = useState('light');
 
   const colorMode = useMemo(
     () => ({
       toggleColorMode: () => {
         setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
-      } 
+      }
     }),
     []
   );
@@ -21,7 +21,7 @@ const ProviderColorMode = memo(({ children }) => {
 
   window['theme'] = theme;
 
-  return <ColorModeContext.Provider value={{ colorMode, theme, mode}}>{children}</ColorModeContext.Provider>;
+  return <ColorModeContext.Provider value={{ colorMode, theme, mode }}>{children}</ColorModeContext.Provider>;
 });
 
 export default ProviderColorMode;

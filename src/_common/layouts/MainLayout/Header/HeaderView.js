@@ -7,15 +7,15 @@ import useStyles from './HeaderStyle';
 import { useContext } from 'react';
 import { ColorModeContext } from 'theme/context/theme-context';
 
-const HeaderView = ({ toggleSidebarIsOpen }) => {
+const HeaderView = ({ toogle }) => {
   const classes = useStyles();
-
-  const { colorMode, theme } = useContext(ColorModeContext);
   
+  const { colorMode, theme } = useContext(ColorModeContext);
+
   return (
     <AppBar className={classes.root}>
       <Toolbar>
-        <IconButton edge="start" className={classes.menuButton} color="inherit" onClick={toggleSidebarIsOpen}>
+        <IconButton edge="start" className={classes.menuButton} color="inherit" onClick={toogle}>
           <MenuIcon />
         </IconButton>
         <Typography variant="h6" className={classes.title}>

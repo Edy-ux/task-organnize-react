@@ -4,16 +4,15 @@ import UserDialog from './UserDialog';
 import UsersFilter from './UsersFilter';
 import UsersTable from './UsersTable';
 
-const UsersView = ({ handleOpenUserDialog, userDialogState }) => {
-  
-  const newButton = <Button onClick={handleOpenUserDialog}>Novo</Button>;
+const UsersView = ({ handleNewUser, userDialogIsOpen }) => {
+  const newButton = <Button onClick={handleNewUser}>Novo</Button>;
 
   return (
     <>
       <PageHeader title="Usuários" actionButton={newButton} />
       <UsersFilter />
       <UsersTable />
-      {userDialogState.open && <UserDialog />}
+      {userDialogIsOpen && <UserDialog />}
     </>
   );
 };

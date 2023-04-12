@@ -3,46 +3,49 @@ const getDesignTokens = (mode) => ({
     mode: mode,
     ...(mode === 'light'
       ? {
-          primary: {
-            main: '#083796',
-            contrastText: '#fff'
-          },
-          secondary: {
-            main: '#08967D'
-          }
-        }
+        primary: {
+          main: '#083796',
+          contrastText: '#fff'
+        },
+        secondary: {
+          main: '#08967D'
+        },
+        text: {
+          primary: '#1D1D1F'
+        },
+      }
       : {
-          primary: {
-            main: '#202123'
+        primary: {
+          main: '#202123'
+        },
+        secondary: {
+          main: "#202123"
+        },
+        background: {
+          paper: '#151515',
+          toolbar: '#151515',
+          drawer: "#202123"
+        },
+        drawer: {
+          primary: '#fff'
+        },
+        text: {
+          primary: '#fff'
+        },
+        props: {
+          MuiButton: {
+            variant: 'contained',
+            color: 'primary'
           },
-          secondary: {
-            main:"#202123"
+          MuiListItem: {
+            color: '#FFF'
           },
-          background: {
-            paper: '#151515',
-            toolbar:  '#151515',
-            drawer: "#202123"
-          },
-          drawer: {
-           primary: '#fff'
-          },
-          text: {
-            primary: '#fff'
-          },
-          props: {
-            MuiButton: {
-              variant: 'contained',
-              color: 'primary'
-            },
-            MuiListItem: {
-              color: '#FFF'
-            },
-            MuiToolbar: {
-              color: '#FFF'
-            }
-      
+          MuiToolbar: {
+            color: '#FFF'
           }
-        })
+
+        }
+      })
   },
   typography: {
     fontFamily: [
@@ -66,11 +69,12 @@ const getDesignTokens = (mode) => ({
   props: {
     MuiButton: {
       variant: 'contained',
-      color: 'primary'
+      color: '#1D1D1F'
     },
     MuiTextField: {
       variant: 'outlined',
-      fullWidth: true
+      fullWidth: true,
+      color: "#FFF"
     },
     MuiListItem: {
       color: '#FFF'

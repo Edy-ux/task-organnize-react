@@ -1,4 +1,4 @@
-import useStyles from './UsersFilterStyle';
+import useStyles from './TasksFilterStyle';
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -7,10 +7,11 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 
-const UsersFilterView = ({ handleChangeSearch, search, isFocused, handleFocus, handleBlur }) => {
+
+const TaskFilterView = ({handleChangeSearch, isFocused, handleFocus, handleBlur }) => {
   const classes = useStyles();
 
-
+  
   return (
     <div className={classes.container}>
       <Paper component="div" className={`${classes.paper} ${isFocused ? classes.focused : ''}`}>
@@ -20,7 +21,7 @@ const UsersFilterView = ({ handleChangeSearch, search, isFocused, handleFocus, h
           className={`${classes.input}`}
           onFocus={handleFocus}
           onBlur={handleBlur}
-          placeholder="Pesquise por nome ou email"
+          placeholder="Pesquise por responsável ou descrição"
           inputProps={{ 'aria-label': 'search users' }}
         />
         <div className={classes.wrapperIcons}>
@@ -34,4 +35,4 @@ const UsersFilterView = ({ handleChangeSearch, search, isFocused, handleFocus, h
   );
 };
 
-export default UsersFilterView;
+export default TaskFilterView;
