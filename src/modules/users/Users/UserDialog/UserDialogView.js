@@ -68,7 +68,7 @@ const UserDialogView = ({ formik, handleOnCloseDialog }) => {
             <Button color="default" onClick={handleOnCloseDialog}>
               Cancelar
             </Button>
-            <Button color="secondary"  autoFocus type="submit" disabled={formik?.isSubmitting}>
+            <Button autoFocus type="submit" disabled={formik?.isSubmitting}>
               Salvar
             </Button>
           </DialogActions>

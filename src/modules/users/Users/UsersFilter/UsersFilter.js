@@ -15,7 +15,6 @@ const UsersListFilter = memo(() => {
   const [search, setSearch] = useState('');
 
   const handleChangeSearch = (e) => setSearch(e.target.value.trim().toLowerCase());
-  console.log('render');
 
   //useDebounce async code
   const debouncedSearchTerm = useDebounce(search);

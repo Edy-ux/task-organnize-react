@@ -3,6 +3,7 @@ import PageHeader from '_common/components/PageHeader';
 import UserDialog from './UserDialog';
 import UsersFilter from './UsersFilter';
 import UsersTable from './UsersTable';
+import Search from '_common/components/Search/Search';
 
 const UsersView = ({ handleNewUser, userDialogIsOpen }) => {
   const newButton = <Button onClick={handleNewUser}>Novo</Button>;
@@ -10,7 +11,8 @@ const UsersView = ({ handleNewUser, userDialogIsOpen }) => {
   return (
     <>
       <PageHeader title="Usuários" actionButton={newButton} />
-      <UsersFilter />
+      <Search placeholder="Pesquise por nome ou email" module="user"
+          areaLabel={{ 'aria-label': 'search users' }} />
       <UsersTable />
       {userDialogIsOpen && <UserDialog />}
     </>

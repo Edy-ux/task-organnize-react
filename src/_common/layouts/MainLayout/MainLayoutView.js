@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: {
       zIndex: 0,
       marginTop: theme.spacing(8),
-      marginLeft: ({ sidebarIsOpen }) => theme.spacing(sidebarIsOpen ? 30 : 8)
+      marginLeft: ({ sidebarIsOpen }) => theme.spacing(sidebarIsOpen  ? 30 : 8)
     },
     transition: theme.transitions.create('margin-left', {
       easing: theme.transitions.easing.sharp,

@@ -32,19 +32,6 @@ const getDesignTokens = (mode) => ({
         text: {
           primary: '#fff'
         },
-        props: {
-          MuiButton: {
-            variant: 'contained',
-            color: 'primary'
-          },
-          MuiListItem: {
-            color: '#FFF'
-          },
-          MuiToolbar: {
-            color: '#FFF'
-          }
-
-        }
       })
   },
   typography: {
@@ -69,7 +56,7 @@ const getDesignTokens = (mode) => ({
   props: {
     MuiButton: {
       variant: 'contained',
-      color: '#1D1D1F'
+      color: 'secondary'
     },
     MuiTextField: {
       variant: 'outlined',
