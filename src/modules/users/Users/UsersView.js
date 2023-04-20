@@ -11,8 +11,7 @@ const UsersView = ({ handleNewUser, userDialogIsOpen }) => {
   return (
     <>
       <PageHeader title="Usuários" actionButton={newButton} />
-      <Search placeholder="Pesquise por nome ou email" module="user"
-          areaLabel={{ 'aria-label': 'search users' }} />
+      <Search placeholder="Pesquise por nome ou email" module="user" areaLabel={{ 'aria-label': 'search users' }} />
       <UsersTable />
       {userDialogIsOpen && <UserDialog />}
     </>
