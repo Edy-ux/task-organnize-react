@@ -52,12 +52,13 @@ const tasksSlice = createSlice({
     builder.addCase(getTasks.fulfilled, (state, action) => {
       tasksAdapter.upsertMany(state, action.payload);
       state.loading = false;
-      state.error = false;
+      state.error = null;
     });
     builder.addCase(getTasks.rejected, (state, action) => {
       state.loading = false;
       state.error = action.payload;
     });
+    
     builder.addCase(updateTask.fulfilled, (state, { payload }) => {
       const { _id, ...changes } = payload;
       tasksAdapter.updateOne(state, { id: _id, changes });

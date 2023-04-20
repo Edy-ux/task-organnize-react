@@ -9,15 +9,13 @@ import { removeUser, selectAllUsers } from '_common/features/users/usersSlice';
 import { confirmationDialogToggle, modalSelector, setUserDialogState, userDialogToggle } from '_common/features/modal/modalSlice';
 
 const UsersTable = () => {
-  const [users, setUsers] = useState(null);
-  const data = useSelector(selectAllUsers)
+  const [users, setUsers] = useState([]);
+  const data = useSelector(selectAllUsers);
   const { loading, error, searchTerm } = useSelector((state) => state.users);
   const { userDialogState, confirmationDialogIsOpen } = useSelector(modalSelector);
   const dispatch = useDispatch();
   const { snackbar } = useSnackbar();
- 
- console.log(users);
- 
+
   // Set users if searchTerm is not a string empty. Otherwise set users with data from api
   useEffect(() => {
     if (searchTerm) {
@@ -54,7 +52,7 @@ const UsersTable = () => {
     dispatch(userDialogToggle());
     dispatch(setUserDialogState(user));
   };
- 
+
   return (
     <UsersTableView
       users={users}
@@ -66,7 +64,8 @@ const UsersTable = () => {
         userDialogState,
         handleSelectUserDelete,
         handleDeleteConfirmation,
-        handleCloseConfirmation
+        handleCloseConfirmation,
+        searchTerm
       }}
     />
   );

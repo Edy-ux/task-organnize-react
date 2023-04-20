@@ -1,3 +1,4 @@
+
 const getDesignTokens = (mode) => ({
   palette: {
     mode: mode,
@@ -9,40 +10,43 @@ const getDesignTokens = (mode) => ({
           },
           secondary: {
             main: '#08967D'
-          }
+          },
+         
         }
-      : {
+      : { 
           primary: {
-            main: '#202123'
+            main: '#202123',  
+            contrastText: '#fff',
           },
           secondary: {
-            main:"#202123"
+            main:'#202123',
+            contrastText: '#000',
           },
           background: {
             paper: '#151515',
             toolbar:  '#151515',
-            drawer: "#202123"
-          },
-          drawer: {
-           primary: '#fff'
+            drawer: '#202123',
           },
           text: {
-            primary: '#fff'
+            primary: "#ccc",
           },
-          props: {
-            MuiButton: {
-              variant: 'contained',
-              color: 'primary'
-            },
-            MuiListItem: {
-              color: '#FFF'
-            },
-            MuiToolbar: {
-              color: '#FFF'
-            }
-      
+          input: {
+            color: "#5F8"
           }
         })
+  },
+  props: {
+    MuiButton: {
+      variant: 'contained',
+      color: 'primary'
+    },
+    MuiTextField: {
+      variant: 'outlined',
+      fullWidth: true
+    },
+    MuiListItem: {
+      color: '#FFF'
+    }
   },
   typography: {
     fontFamily: [
@@ -63,24 +67,13 @@ const getDesignTokens = (mode) => ({
   shape: {
     borderRadius: 3
   },
-  props: {
-    MuiButton: {
-      variant: 'contained',
-      color: 'primary'
-    },
-    MuiTextField: {
-      variant: 'outlined',
-      fullWidth: true
-    },
-    MuiListItem: {
-      color: '#FFF'
-    }
-  }
+
+
+  
 });
 
-
-
 export default getDesignTokens;
+
 
 /* 
 const getDesignTokens = () => ({

@@ -14,7 +14,8 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import { Grid } from '@material-ui/core';
 import FormatDate from '_common/utils/formatDate';
 import ConfirmationDialog from '_common/components/ConfirmationDialog';
-import { memo } from 'react';
+
+
 
 const UsersTableView = ({
   error,
@@ -25,10 +26,11 @@ const UsersTableView = ({
   handleEdit,
   confirmationDialogIsOpen,
   userDialogState,
-  handleDeleteConfirmation
+  handleDeleteConfirmation,
+  searchTerm
 }) => {
   const classes = useStyles();
- 
+
   return (
     <TableContainer component={Paper} className={classes.root}>
       <Table className={classes.table} size="small" aria-label="a dense table">
@@ -48,13 +50,11 @@ const UsersTableView = ({
               <>Ops! Ocorreu um error</>
             </center>
           ) : (
-            users?.map((user) => {
+            users.map((user) => {
               const { creation, _id, email, name } = user;
               return (
                 <TableRow key={_id} hover>
-                  <TableCell component="th" scope="row">
-                    {name}
-                  </TableCell>
+                  <TableCell> {name}</TableCell>
                   <TableCell>{email}</TableCell>
                   <TableCell>{FormatDate.formatDateCreatedAt(creation)}</TableCell>
                   <TableCell align="center">
@@ -68,10 +68,9 @@ const UsersTableView = ({
             })
           )}
         </TableBody>
-        
       </Table>
       {loading && <LoadingSpinner />}
-      {(!error && !loading && users && !users.length) && <EmptyBox />}
+      {searchTerm && !users.length && <EmptyBox />}
       {confirmationDialogIsOpen && (
         <ConfirmationDialog
           title={`Deseja deletar o usuário ${userDialogState.name}? `}

@@ -1,9 +1,14 @@
-import { useMainContext } from '../../context/useMainContext'
+import { useCallback } from 'react';
+import { useMainContext } from '../../context/useMainContext';
 import MenuItemView from './MenuItemView';
 
 const MenuItem = ({ text, icon, path, items }) => {
   const { setDropDownIsOpen, dropDownIsOpen } = useMainContext();
-  const handleClick = (_) => setDropDownIsOpen((isOpen) => !isOpen);
+
+  const handleClick = useCallback(() => {
+    setDropDownIsOpen((isOpen) => !isOpen);
+  }, [setDropDownIsOpen]);
+
   return (
     <>
       <MenuItemView {...{ text, icon, path, handleClick, dropDownIsOpen, items }} />

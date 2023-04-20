@@ -21,7 +21,7 @@ const Header = () => {
     [setSidebarIsOpen, sidebarIsOpen]
   );
 
-  const toogle = () => setSidebarIsOpen((isOpen) => !isOpen);
+  const toggle = () => setSidebarIsOpen((isOpen) => !isOpen);
 
   useEffect(() => {
     document.addEventListener(KEY_EVENT_TYPE, handleEscKey);
@@ -30,7 +30,7 @@ const Header = () => {
 
   return (
     <>
-      <HeaderView {...{ toogle }} />
+      <HeaderView {...{ toggle }} />
     </>
   );
 };
