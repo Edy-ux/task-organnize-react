@@ -4,7 +4,7 @@ import UsersComponent from './Users';
 const UsersRoutes = ({ match: { url } }) => {
   return (
     <Switch>
-        <Route path={`${url}/`} component={UsersComponent} />
+      <Route path={`${url}/`} component={UsersComponent} />
     </Switch>
   );
 };

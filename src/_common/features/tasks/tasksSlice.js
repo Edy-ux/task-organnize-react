@@ -31,7 +31,7 @@ export const tasksAdapter = createEntityAdapter({
 const initialState = tasksAdapter.getInitialState({
   loading: false,
   error: null,
-  searchTermTasks: ''
+  searchTermTasks: null
 });
 
 const tasksSlice = createSlice({

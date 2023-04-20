@@ -9,17 +9,23 @@ import EmptyBox from '_common/lotties/EmptyBox';
 import LoadingSpinner from '_common/lotties/LoadingSpinner';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
-
+import { GridLoader } from 'react-spinners';
 import { Grid } from '@material-ui/core';
 import FormatDate from '_common/utils/formatDate';
 import ConfirmationDialog from '_common/components/ConfirmationDialog';
 import useStyles from './TasksTableStyle';
 import { memo } from 'react';
 
+const override = {
+  display: "block",
+  margin: "4rem auto"
+}
+
 const TasksTableView = memo(
   ({
     error,
     loading,
+    searchTermTask,
     handleCloseConfirmation,
     tasks,
     handleSelectTaskDelete = (f) => f,
@@ -51,7 +57,7 @@ const TasksTableView = memo(
               </center>
             ) : (
               tasks?.map((task) => {
-                const { status, creation, _id, description, responsible} = task;
+                const { status, creation, _id, description, responsible } = task;
                 return (
                   <TableRow key={_id} hover>
                     <TableCell component="th" scope="row">
@@ -72,8 +78,8 @@ const TasksTableView = memo(
             )}
           </TableBody>
         </Table>
-        {loading && <LoadingSpinner />}
-        {!error && tasks && !tasks.length && <EmptyBox />}
+
+        {(tasks && !tasks.length && searchTermTask) && <EmptyBox />}
         {confirmationDialogIsOpen && (
           <ConfirmationDialog
             title={`Deseja deletar o usuário ${taskDialogState.name}? `}

@@ -6,17 +6,21 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import EmptyBox from '_common/lotties/EmptyBox';
-import LoadingSpinner from '_common/lotties/LoadingSpinner';
 import useStyles from './UsersTableStyle';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
-
 import { Grid } from '@material-ui/core';
+import { GridLoader } from "react-spinners";
+
 import FormatDate from '_common/utils/formatDate';
 import ConfirmationDialog from '_common/components/ConfirmationDialog';
 
+import { memo } from 'react';
 
-
+const override = {
+  display: "block",
+  margin: "10rem auto",
+};
 const UsersTableView = ({
   error,
   loading,
@@ -68,8 +72,18 @@ const UsersTableView = ({
             })
           )}
         </TableBody>
+        
       </Table>
-      {loading && <LoadingSpinner />}
+      {loading && (
+            <GridLoader
+            cssOverride={override}
+            color="#36d7b7"
+            loading={true}
+            size={20}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
+      )}
       {searchTerm && !users.length && <EmptyBox />}
       {confirmationDialogIsOpen && (
         <ConfirmationDialog

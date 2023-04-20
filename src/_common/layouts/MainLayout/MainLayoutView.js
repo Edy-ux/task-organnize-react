@@ -26,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+
 const RootLayoutMainView = memo(({ children }) => {
   const { sidebarIsOpen } = useMainContext();
   const classes = useStyles({ sidebarIsOpen });

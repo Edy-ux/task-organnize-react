@@ -1,17 +1,22 @@
 
+import { GridLoader } from "react-spinners";
 import PageHeader from "_common/components/PageHeader";
-import Snackbar from "_common/components/Snackbar";
-import useSnackbar from "_common/hooks/useSnackbar";
-import LoadingSpinner from "_common/lotties/LoadingSpinner";
-
+const override = {
+  display: "block",
+  margin: "10rem auto",
+};
 const DashBoardView = () => {
-
- const {handleClose} = useSnackbar()
   return (
     <>
-       <PageHeader title="Dashboard"/>
-       <LoadingSpinner />
-
+      <PageHeader title="Dashboard" />
+      <GridLoader
+        cssOverride={override}
+        color="#36d7b7"
+        loading={true}
+        size={20}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />
     </>
 
   )

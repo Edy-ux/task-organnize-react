@@ -5,7 +5,6 @@ import tasksReducer from '_common/features/tasks/tasksSlice';
 import modalSlice from '_common/features/modal/modalSlice';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import { userApi } from '_common/services/api';
-import logger from 'redux-logger';
 
 export const store = configureStore({
   reducer: {

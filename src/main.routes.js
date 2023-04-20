@@ -13,7 +13,9 @@ const MainRoutes = () => {
       <Switch>
         <Route path="/dashboard" component={LazyLoading(DashboardRoutes)} />
         <Route path="/tarefas" component={LazyLoading(TasksRoutes)}/>
-        <Route path="/usuarios/" component={UsersRoutes} />
+    
+     
+        <Route path="/usuarios/" component={LazyLoading(UsersRoutes)} />
         <Redirect to="/dashboard" />
       </Switch>
     </MainLayout>

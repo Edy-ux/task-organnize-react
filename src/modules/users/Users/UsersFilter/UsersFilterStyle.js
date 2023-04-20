@@ -16,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-between',
     borderRadius: 30
     
-
   },
 
   input: {
@@ -29,8 +28,8 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center'
   },
   searchIcon: {
-    height: 25,
-    width: 25,
+    height: 20,
+    width: 20,
     background: 'transparent'
   },
 

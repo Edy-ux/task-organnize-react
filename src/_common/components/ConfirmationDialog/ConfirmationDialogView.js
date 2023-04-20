@@ -16,7 +16,7 @@ export default function ConfirmationDialogView({ title, text, handleCloseConfirm
         <Button onClick={handleCloseConfirmation} color="default">
           Cancelar
         </Button>
-        <Button onClick={handleDeleteConfirmation} color="primary" autoFocus>
+        <Button onClick={handleDeleteConfirmation} color="secondary" autoFocus>
           Confirmar
         </Button>
       </DialogActions>

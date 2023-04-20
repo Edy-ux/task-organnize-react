@@ -14,11 +14,13 @@ const MenuItemView = memo(({ text, icon, path, items, handleClick, dropDownIsOpe
   const { pathname } = useLocation();
   const { sidebarIsOpen } = useMainContext();
 
+  const componentLink = path ? Link : 'li'
+
   return (
     <ListItem
       key={text}
       button
-      component={path ? Link : 'li'}
+      component={componentLink}
       to={path}
       title={!sidebarIsOpen ? text : ''}
       onClick={items ? handleClick : null}

@@ -8,14 +8,14 @@ import TasksTableView from './TasksTableView';
 
 const TasksTable = () => {
   const [tasks, setTasks] = useState(null);
-  const {status} = useParams()
+  const { status } = useParams()
   const data = useSelector(selectAllTasks);
 
 
   const { loading, error, searchTermTask } = useSelector((state) => state.tasks);
   const dispatch = useDispatch();
   const { snackbar } = useSnackbar();
- 
+
   // Set tasks if searchTerm is not a string empty. Otherwise set users with data from api
   useEffect(() => {
     if (searchTermTask) {
@@ -25,11 +25,9 @@ const TasksTable = () => {
       setTasks(result);
       return;
     }
-    setTasks(data);
+    setTasks(data || null);
   }, [searchTermTask, data]);
-  return <TasksTableView 
-     tasks={tasks}
-         />;
+  return <TasksTableView {...{ loading, tasks, searchTermTask }} />;
 };
 
 export default TasksTable;
