@@ -9,10 +9,14 @@ const useStyles = makeStyles((theme) => ({
   main: {
     padding: theme.spacing(3, 3),
     marginTop: theme.spacing(6),
-    marginLeft: theme.spacing(8),
     minHeight: theme.spacing(100),
     color: theme.palette.mode === 'light' ? '#3b4045' : '#FFF',
-    [theme.breakpoints.up('md')]: {
+    [theme.breakpoints.down('sm')]: {
+      zIndex: 0,
+      marginTop: theme.spacing(8),
+      marginLeft: ({ sidebarIsOpen }) => theme.spacing(sidebarIsOpen ? 30 : 8 )
+    },
+    [theme.breakpoints.up('sm')]: {
       zIndex: 0,
       marginTop: theme.spacing(8),
       marginLeft: ({ sidebarIsOpen }) => theme.spacing(sidebarIsOpen ? 30 : 8)
@@ -29,6 +33,8 @@ const useStyles = makeStyles((theme) => ({
 
 const RootLayoutMainView = memo(({ children }) => {
   const { sidebarIsOpen } = useMainContext();
+  console.log(sidebarIsOpen);
+  
   const classes = useStyles({ sidebarIsOpen });
   return (
     <>
