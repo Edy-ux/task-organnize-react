@@ -1,19 +1,37 @@
 
-# Organizador de tarefas desenvolvido durante o curso frontEnd Tac Dev  Tiago Cordeiro. 
+# Task Organnize
 
+**Organizador de tarefas desenvolvido durante o curso frontend do canal Tac Dev - Tiago Cordeiro.** 
 
 ### Repositório do [Curso Frontend React](https://www.youtube.com/watch?v=bxdLk93idaQ&list=PLl4e5NAFzX70Eo0hshlHzmrYi9IG0bYxq) disponível gratuitamente no YouTube:
-    
-[![Curso Frontend React](./assets/capa-apresentacao.png)](https://www.youtube.com/watch?v=bxdLk93idaQ&list=PLl4e5NAFzX70Eo0hshlHzmrYi9IG0bYxq)
+</br>
+<h1 align="center" >DashBoard</h1>
+<p align="center" width="100%">
+  <img src="./assets/macairtask.png" />
+</p>
 
-### Um pouco do que vamos desenvolver ao longo do curso:
-![Curso Frontend React](./assets/dashboard-print.png)
-![Curso Frontend React](./assets/usuarios-print.png)
-![Curso Frontend React](./assets/tarefas-print.png)
+<h1 align="center" >Usuários</h1>
+</br>
+<p align="center" width="100%">
+  <img src="./assets/macairtask.png" />
+</p>
 
-#### Entre a nossa comunidade do Discord, todo feedback sobre o curso será muito bem recebido 👇👇
+## Stack utilizada
 
-👥 Comunidade no Discord: https://bit.ly/discord-tac-dev
+**Front-end:** React, Redux, Formik, Yup, Material UI.
 
-🚀 Instagram: https://www.instagram.com/tac.dev
+**Back-end:** Node, Express, MONGO DB.
 
+
+## Referência
+
+ - [Redux toolkit](https://redux-toolkit.js.org/)
+ - [Material UI ](https://v4.mui.com/getting-started/installation/)
+ - [React Js](https://react.dev/)
+
+## Aprendizados
+
+- Organização e estrutura de pasta em projeto React. 
+- API de Internacionalização intl do ECMAScript.  Para formatação de números, data e hora.
+- React custom hooks, como o useDebounce e useEscapeKey.
+- Uso Mareial UI e da lib lotties.
