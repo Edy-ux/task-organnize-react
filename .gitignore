@@ -5,6 +5,7 @@
 /curso-fullstack-back-aulas
 /.pnp
 .pnp.js 
+/.env
 # testing
 /coverage
 
