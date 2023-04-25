@@ -1,9 +1,9 @@
-import userService from "../../users/services/user.services";
-import { LOGGED_USER_ID } from "../../../_common/constants";
-import api from "_common/services/api";
-import { STATUS_TASK_ROUTE } from "../constants";
+import userService from '../../users/services/user.services';
+import { LOGGED_USER_ID } from '../../../_common/constants';
+import api from '_common/services/api';
+import { STATUS_TASK_ROUTE } from '../constants';
 
-const BASE_PATH = "/task";
+const BASE_PATH = '/task';
 
 const getByStatus = (status) => {
   const statusCode = STATUS_TASK_ROUTE[status] || 3;

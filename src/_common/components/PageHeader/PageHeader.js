@@ -1,10 +1,14 @@
-import PageHeaderView from "./PageHeaderView";
+import { useEffect } from 'react';
+import PageHeaderView from './PageHeaderView';
 
 const PageHeader = ({ title, actionButton }) => {
-    const documentTitle = `Task Organizze`
-    document.title = `${documentTitle} - ${title}`
+  const defaultTitle = `Task Organizze`;
 
-    return <PageHeaderView  {...{ title, actionButton}} />
-}
+  useEffect(() => {
+    document.title = `${defaultTitle} - ${title}`;
+  }, []);
 
-export default PageHeader
+  return <PageHeaderView {...{ title, actionButton }} />;
+};
+
+export default PageHeader;

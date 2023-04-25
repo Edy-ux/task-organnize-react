@@ -4,17 +4,17 @@ import useSnackbarContext from '_common/components/Snackbar/context/SnackbarCont
 import useSnackbar from '_common/hooks/useSnackbar';
 
 const Snackbar = () => {
-  const {setSnackbarState, snackbarState } = useSnackbarContext();
-  
-  const {snackbarSuccess} = useSnackbar()
+  const { setSnackbarState, snackbarState } = useSnackbarContext();
+
+  const { snackbarSuccess } = useSnackbar();
 
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') return;
-    setSnackbarState({ open: false});
+    setSnackbarState({ open: false, error: null });
   };
 
   const handleOpen = () => snackbarSuccess();
-  return <SnackbarView open={snackbarState.open} message={snackbarState.message} handleClose={handleClose} handleOpen={handleOpen}  />;
+  return <SnackbarView open={snackbarState.open} message={snackbarState.message} handleClose={handleClose} handleOpen={handleOpen} />;
 };
 
 export default Snackbar;

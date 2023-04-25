@@ -21,7 +21,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const UserDialog = () => {
-  const { snackbar, snackbarSuccess } = useSnackbar();
+  const { snackbar, snackbarSuccess, snackbarError } = useSnackbar();
   const { userDialogState } = useSelector(modalSelector);
   const dispatch = useDispatch();
 
@@ -41,13 +41,15 @@ const UserDialog = () => {
         dispatch(updateUser({ id: values._id, changes: { ...values } }));
         snackbarSuccess();
       } else {
-        const {data: { body }} = await UserService.post(values);
+        const {
+          data: { body }
+        } = await UserService.post(values);
         const { password, ...user } = body;
         dispatch(addUser(user));
         snackbar('Usuário cadastrado');
       }
     } catch ({ response: { data } }) {
-      snackbar(data.message);
+      snackbarError(data.message);
     } finally {
       setSubmitting(false);
       handleOnCloseDialog();

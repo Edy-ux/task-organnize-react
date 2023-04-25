@@ -1,14 +1,13 @@
 import SearchView from './SearchView';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { setSearchTerm as setSearchTermUser} from '_common/features/users/usersSlice';
-import { setSearchTermTask} from '_common/features/tasks/tasksSlice';
-
-
+import { setSearchTerm as setSearchTermUser } from '_common/features/users/usersSlice';
+import { setSearchTermTask } from '_common/features/tasks/tasksSlice';
 
 import useDebounce from '_common/hooks/useDebounce';
+import { MODULE } from 'modules/tasks/constants';
 
-const Search = ({placeholder, areaLabel, module}) => {
+const Search = ({ placeholder, areaLabel, module }) => {
   const [isFocused, setIsFocused] = useState(false);
   const dispatch = useDispatch();
 
@@ -24,14 +23,10 @@ const Search = ({placeholder, areaLabel, module}) => {
   const debouncedSearchTerm = useDebounce(search);
 
   useEffect(() => {
-    if (dispatch) {
-      module === "user" ? 
-      dispatch(setSearchTermUser(debouncedSearchTerm)): 
-      dispatch(setSearchTermTask(debouncedSearchTerm))
-    }
-  }, [debouncedSearchTerm, dispatch]);
+    module === MODULE.USER ? dispatch(setSearchTermUser(debouncedSearchTerm)) : dispatch(setSearchTermTask(debouncedSearchTerm));
+  }, [debouncedSearchTerm, dispatch, module]);
 
-  return <SearchView {...{ handleChangeSearch, search, handleFocus, handleBlur, isFocused, placeholder, areaLabel}} />;
-}
+  return <SearchView {...{ handleChangeSearch, search, handleFocus, handleBlur, isFocused, placeholder, areaLabel }} />;
+};
 
 export default Search;

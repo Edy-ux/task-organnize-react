@@ -10,16 +10,14 @@ import useStyles from './UsersTableStyle';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { Grid } from '@material-ui/core';
-import { GridLoader } from "react-spinners";
+import { GridLoader } from 'react-spinners';
 
 import FormatDate from '_common/utils/formatDate';
 import ConfirmationDialog from '_common/components/ConfirmationDialog';
 
-import { memo } from 'react';
-
 const override = {
-  display: "block",
-  margin: "10rem auto",
+  display: 'block',
+  margin: '10rem auto'
 };
 const UsersTableView = ({
   error,
@@ -50,9 +48,9 @@ const UsersTableView = ({
         </TableHead>
         <TableBody className={classes.tbody}>
           {error ? (
-            <center>
-              <>Ops! Ocorreu um error</>
-            </center>
+            <div style={{ marginTop: '3rem' }}>
+              <span>Ops! Ocorreu um error</span>
+            </div>
           ) : (
             users.map((user) => {
               const { creation, _id, email, name } = user;
@@ -72,17 +70,9 @@ const UsersTableView = ({
             })
           )}
         </TableBody>
-        
       </Table>
-      {loading && (
-            <GridLoader
-            cssOverride={override}
-            color="#36d7b7"
-            loading={true}
-            size={20}
-            aria-label="Loading Spinner"
-            data-testid="loader"
-          />
+      {!error && loading && (
+        <GridLoader cssOverride={override} color="#36d7b7" loading={true} size={20} aria-label="Loading Spinner" data-testid="loader" />
       )}
       {searchTerm && !users.length && <EmptyBox />}
       {confirmationDialogIsOpen && (

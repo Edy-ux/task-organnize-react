@@ -18,10 +18,10 @@ const UserDialogView = ({ formik, handleOnCloseDialog }) => {
 
   return (
     <>
-      <Dialog fullWidth maxWidth="xs" open onClose={handleOnCloseDialog}>
+      <Dialog className={classes.root} fullWidth maxWidth="xs" open onClose={handleOnCloseDialog}>
         <DialogTitle>{formik.values._id ? 'Editar' : 'Novo'} Usuário</DialogTitle>
         <form onSubmit={formik.handleSubmit} noValidate autoComplete="off">
-          <DialogContent dividers>
+          <DialogContent dividerss>
             <Grid container direction="column" spacing={2}>
               <Grid item>
                 <TextField
@@ -30,7 +30,7 @@ const UserDialogView = ({ formik, handleOnCloseDialog }) => {
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   value={formik.values.name}
-                  error={formik.touched.name && !!formik.errors.name}
+                  error={formik.touched.name && formik.errors.name}
                   helperText={formik.touched.name && formik.errors.name}
                 />
               </Grid>
@@ -41,7 +41,7 @@ const UserDialogView = ({ formik, handleOnCloseDialog }) => {
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   value={formik.values.email}
-                  error={formik.touched.email && !!formik.errors.email}
+                  error={formik.touched.email && formik.errors.email}
                   helperText={formik.touched.email && formik.errors.email}
                 />
               </Grid>

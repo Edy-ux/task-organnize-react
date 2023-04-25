@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk, createEntityAdapter } from '@reduxjs/toolkit';
 import taskService from '../../../modules/tasks/services/task-services';
 
-export const getTasks = createAsyncThunk('tasks/getTasks', async (data, thunkApi) => {
+export const getTasks = createAsyncThunk('tasks/getTasks', async (arg, thunkApi) => {
   try {
     const response = await taskService.getAll();
     const result = await response.data.body;
@@ -10,7 +10,6 @@ export const getTasks = createAsyncThunk('tasks/getTasks', async (data, thunkApi
     return thunkApi.rejectWithValue(error);
   }
 });
-
 
 export const remove = createAsyncThunk('tasks/removeOne', async (id) => {
   await taskService.remove(id);
@@ -58,7 +57,7 @@ const tasksSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     });
-    
+
     builder.addCase(updateTask.fulfilled, (state, { payload }) => {
       const { _id, ...changes } = payload;
       tasksAdapter.updateOne(state, { id: _id, changes });

@@ -1,14 +1,10 @@
-import { useTheme } from '@material-ui/core';
 import { useCallback, useEffect } from 'react';
-import useEscapeKey from '_common/hooks/useEscapeKey';
 import { useMainContext } from '../context/useMainContext';
 import HeaderView from './HeaderView';
 const KEY_NAME_ESC = 'Escape';
 const KEY_EVENT_TYPE = 'keydown';
 
 const Header = () => {
-  const theme = useTheme();
-
   const { sidebarIsOpen, setSidebarIsOpen } = useMainContext();
   /* . To prevent an infinite loop, useCallback hook caches our handleEscKey function so that it doesn’t 
   continually become a new function at each render. */

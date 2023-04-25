@@ -4,10 +4,9 @@ import TasksContextProvider from './Tasks/context/TasksContext';
 
 const TasksRoutes = ({ match: { url } }) => {
   return (
-
     <Switch>
       <TasksContextProvider>
-        <Route path={`${url}/`} component={TasksComponent} />
+        <Route path={`${url}/:status?`} component={TasksComponent} />
       </TasksContextProvider>
     </Switch>
   );

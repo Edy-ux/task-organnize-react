@@ -7,6 +7,7 @@ import TasksView from './TasksView';
 const Tasks = () => {
   const { taskDialog, setTaskDialog } = useTasksContext();
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getTasks());
   }, [dispatch]);

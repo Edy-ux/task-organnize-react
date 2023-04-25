@@ -22,7 +22,6 @@ const SideBarView = ({ sidebarIsOpen }) => {
       }}>
       <List>
         {menu.map((item, index) => {
-          console.log('i am rendering');
           const { items } = item;
           return (
             <>
