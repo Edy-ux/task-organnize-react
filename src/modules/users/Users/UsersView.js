@@ -1,7 +1,6 @@
 import Button from '@material-ui/core/Button';
 import PageHeader from '_common/components/PageHeader';
 import UserDialog from './UserDialog';
-import UsersFilter from './UsersFilter';
 import UsersTable from './UsersTable';
 import Search from '_common/components/Search/Search';
 

@@ -1,19 +1,26 @@
+import { useEffect, useMemo, useState } from 'react';
 import { SnackbarContextProvider } from '_common/components/Snackbar/context/SnackbarContext';
 import MainRoutes from './main.routes';
-import './index.css';
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
-import { useMemo, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import './index.css';
+
 import getDesignTokens from 'theme';
-
+import { getUsers } from '_common/features/users/usersSlice';
 export default function App() {
- // const { theme } = useContext(ColorModeContext);
- const [darkMode, setDarkMode] = useState("light");
+  // const { theme } = useContext(ColorModeContext);
+  const dispatch = useDispatch();
 
-  const colorMode = useMemo(  
+  useEffect(() => {
+    dispatch(getUsers());
+  }, [dispatch]);
+  const [darkMode, setDarkMode] = useState('light');
+
+  const colorMode = useMemo(
     () => ({
       toggleColorMode: () => {
         setDarkMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
-      } 
+      }
     }),
     []
   );
