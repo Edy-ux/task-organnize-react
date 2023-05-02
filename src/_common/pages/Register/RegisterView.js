@@ -3,7 +3,6 @@ import './RegisterStyle.css';
 import { useHistory } from 'react-router-dom';
 
 export default function RegisterView({ formik, name }) {
-  const history = useHistory('');
   // console.log(formik.values);
   /*   const register = (event) => {
     event.preventDefault();
