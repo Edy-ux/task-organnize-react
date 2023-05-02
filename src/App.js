@@ -22,12 +22,12 @@ export default function App() {
   );
 
   const theme = useMemo(() => createTheme(getDesignTokens(darkMode)), [darkMode]);
-
+  const userIsLogged = false;
   return (
     <div className="app">
       <ThemeProvider {...{ theme }}>
         <SnackbarContextProvider>
-          {!true ? (
+          {!userIsLogged ? (
             <MainRoutes />
           ) : (
             <>
