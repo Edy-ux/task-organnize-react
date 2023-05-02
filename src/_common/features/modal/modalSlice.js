@@ -4,7 +4,7 @@ const initialState = () => ({
   userDialogIsOpen: false,
   sidebarIsOpen: false,
   userDialogState: null,
-  confirmationDialogIsOpen: false,
+  confirmationDialogIsOpen: false
 });
 
 const modalSlice = createSlice({
@@ -13,14 +13,14 @@ const modalSlice = createSlice({
   reducers: {
     userDialogToggle: (state) => void (state.userDialogIsOpen = !state.userDialogIsOpen),
     setUserDialogState: (state, { payload }) => {
-      state.userDialogState = payload
+      state.userDialogState = payload;
     },
     confirmationDialogToggle: (state) => {
-      state.confirmationDialogIsOpen = !state.confirmationDialogIsOpen
+      state.confirmationDialogIsOpen = !state.confirmationDialogIsOpen;
     },
     setSidebarIsOpen: (state) => {
-      state.sidebarIsOpen = !state.sidebarIsOpen
-    },
+      state.sidebarIsOpen = !state.sidebarIsOpen;
+    }
   }
 });
 

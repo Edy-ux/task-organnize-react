@@ -5,14 +5,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import UserService from '../../services/user.services';
 import useSnackbar from '_common/hooks/useSnackbar';
 
-import { removeUser, selectAllUsers, selectUserById } from '_common/features/users/usersSlice';
+import { removeUser, selectAllUsers } from '_common/features/users/usersSlice';
 import { confirmationDialogToggle, modalSelector, setUserDialogState, userDialogToggle } from '_common/features/modal/modalSlice';
 
 const UsersTable = () => {
   const [users, setUsers] = useState([]);
   const data = useSelector(selectAllUsers);
-  const userById = useSelector(selectUserById);
-  console.log(userById);
 
   const { loading, error, searchTerm } = useSelector((state) => state.users);
   const { userDialogState, confirmationDialogIsOpen } = useSelector(modalSelector);

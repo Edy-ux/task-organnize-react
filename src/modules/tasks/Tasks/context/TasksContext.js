@@ -3,13 +3,9 @@ import { createContext, memo, useContext, useState } from 'react';
 export const TasksContext = createContext({});
 TasksContext.displayName = 'TasksContext';
 
-
 const useProviderTasks = () => {
   const [tasks, setTasks] = useState(null);
-  const [filter, setFilter] = useState('');
   const [taskDialog, setTaskDialog] = useState({ open: false });
-
-  const navigatorIsOnline = navigator.onLine;
 
   return {
     tasks,

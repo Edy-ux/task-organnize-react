@@ -4,8 +4,6 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { useTheme } from '@material-ui/core/styles';
 import useStyles from './UserDialogViewStyle';
 import Grid from '@material-ui/core/Grid';
 import { TextField } from '@material-ui/core';
@@ -13,8 +11,6 @@ import FormatDate from '_common/utils/formatDate';
 
 const UserDialogView = ({ formik, handleOnCloseDialog }) => {
   const classes = useStyles();
-  const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
     <>

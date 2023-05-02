@@ -1,4 +1,3 @@
-import { useContext, useEffect } from 'react';
 import SnackbarView from './SnackBarView';
 import useSnackbarContext from '_common/components/Snackbar/context/SnackbarContext';
 import useSnackbar from '_common/hooks/useSnackbar';

@@ -57,6 +57,9 @@ const userSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     });
+    builder.addCase(updateUser.pending, (state) => {
+      state.loading = true;
+    });
     builder.addCase(updateUser.fulfilled, (state, { payload }) => {
       const { _id, ...changes } = payload;
       usersAdapter.updateOne(state, { id: _id, changes });
