@@ -1,7 +1,7 @@
 
 
 <h1 align="center">
-   Task Organizze
+   Task organize
 </h1>
 <p align="center">
   <a href="#tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp; 

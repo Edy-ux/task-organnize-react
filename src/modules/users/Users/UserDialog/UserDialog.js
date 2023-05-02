@@ -49,10 +49,8 @@ const UserDialog = () => {
         snackbar('Usuário cadastrado');
       }
     } catch ({ response: { data } }) {
-      snackbarError(data.message);
     } finally {
       setSubmitting(false);
-      handleOnCloseDialog();
     }
   };
 

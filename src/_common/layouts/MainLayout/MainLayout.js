@@ -1,7 +1,11 @@
+import LazyLoading from '_common/components/LazyLoading/LazyLoading';
 import ProviderMain from './context/useMainContext';
 import RootLayoutMainView from './MainLayoutView';
+import { Switch, Route, useHistory } from 'react-router-dom';
+import RegisterRoutes from '_common/pages/Register/register.routes';
 
-const MainLayoutWrapper = ({ children }) => {
+const MainLayout = ({ children }) => {
+  const history = useHistory('');
   return (
     <>
       <ProviderMain>
@@ -10,4 +14,4 @@ const MainLayoutWrapper = ({ children }) => {
     </>
   );
 };
-export default MainLayoutWrapper;
+export default MainLayout;

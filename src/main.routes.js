@@ -5,17 +5,21 @@ import MainLayout from '_common/layouts/MainLayout';
 const DashboardRoutes = lazy(() => import('modules/dashboard/dashboard.routes'));
 const TasksRoutes = lazy(() => import('modules/tasks/tasks.routes'));
 const UsersRoutes = lazy(() => import('modules/users/users.routes'));
+const RegisterRoutes = lazy(() => import('_common/pages/Register/register.routes'));
+const LoginRoutes = lazy(() => import('_common/pages/Login/login.routes'));
 
 const MainRoutes = () => {
   return (
-    <MainLayout>
-      <Switch>
-        <Route path="/dashboard" component={LazyLoading(DashboardRoutes)} />
-        <Route path="/tarefas" component={LazyLoading(TasksRoutes)} />
-        <Route path="/usuarios/" component={LazyLoading(UsersRoutes)} />
-        <Redirect to="/dashboard" />
-      </Switch>
-    </MainLayout>
+    <>
+      <MainLayout>
+        <Switch>
+          <Route path="/dashboard" component={LazyLoading(DashboardRoutes)} />
+          <Route path="/tarefas" component={LazyLoading(TasksRoutes)} />
+          <Route path="/usuarios/" component={LazyLoading(UsersRoutes)} />
+          <Redirect to="/dashboard" />
+        </Switch>
+      </MainLayout>
+    </>
   );
 };
 

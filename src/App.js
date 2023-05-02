@@ -1,19 +1,15 @@
-import { useEffect, useMemo, useState } from 'react';
+import { lazy, useMemo, useState } from 'react';
 import { SnackbarContextProvider } from '_common/components/Snackbar/context/SnackbarContext';
 import MainRoutes from './main.routes';
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
-import { useDispatch, useSelector } from 'react-redux';
-import './index.css';
-
 import getDesignTokens from 'theme';
-import { getUsers } from '_common/features/users/usersSlice';
-export default function App() {
-  // const { theme } = useContext(ColorModeContext);
-  const dispatch = useDispatch();
+import './index.css';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import LazyLoading from '_common/components/LazyLoading/LazyLoading';
+const RegisterRoutes = lazy(() => import('_common/pages/Register/register.routes'));
+const LoginRoutes = lazy(() => import('_common/pages/Login/login.routes'));
 
-  useEffect(() => {
-    dispatch(getUsers());
-  }, [dispatch]);
+export default function App() {
   const [darkMode, setDarkMode] = useState('light');
 
   const colorMode = useMemo(
@@ -31,7 +27,20 @@ export default function App() {
     <div className="app">
       <ThemeProvider {...{ theme }}>
         <SnackbarContextProvider>
-          <MainRoutes />
+          {!true ? (
+            <MainRoutes />
+          ) : (
+            <>
+              <Switch>
+                <Route path="/login" component={LazyLoading(LoginRoutes)} />
+              </Switch>
+              <Switch>
+                <Route exact="true" path="/sign-up" component={LazyLoading(RegisterRoutes)} />
+              </Switch>
+
+              <Redirect to="/login" />
+            </>
+          )}
         </SnackbarContextProvider>
       </ThemeProvider>
     </div>

@@ -22,15 +22,19 @@ export const updateUser = createAsyncThunk('users/updateOne', async (arg) => {
 
 export const usersAdapter = createEntityAdapter({
   // Assume IDs are stored in a field other than `user._id`
-  selectId: (user) => user._id
+  selectId: (user) => user._id,
   // Keep the "all IDs" array sorted based on user name
-  // sortComparer: (a, b) => a.name.localeCompare(b.name)
+  sortComparer: (a, b) => a.name.localeCompare(b.name)
 });
 
 const initialState = usersAdapter.getInitialState({
   loading: false,
   error: null,
-  searchTerm: ''
+  searchTerm: '',
+  user: {
+    isLogged: null,
+    id: null
+  }
 });
 
 const userSlice = createSlice({
@@ -41,6 +45,9 @@ const userSlice = createSlice({
     addUser: usersAdapter.addOne,
     setSearchTerm(state, { payload: filter }) {
       state.searchTerm = filter;
+    },
+    setUserIsLogged(state, action) {
+      state.user = action.payload;
     }
   },
   extraReducers: (builder) => {
@@ -57,9 +64,6 @@ const userSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     });
-    builder.addCase(updateUser.pending, (state) => {
-      state.loading = true;
-    });
     builder.addCase(updateUser.fulfilled, (state, { payload }) => {
       const { _id, ...changes } = payload;
       usersAdapter.updateOne(state, { id: _id, changes });
@@ -67,7 +71,7 @@ const userSlice = createSlice({
   }
 });
 
-export const { removeUser, addUser, setSearchTerm } = userSlice.actions;
+export const { removeUser, addUser, setSearchTerm, setUserIsLogged } = userSlice.actions;
 export default userSlice.reducer;
 
 export const {
