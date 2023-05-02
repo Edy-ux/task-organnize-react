@@ -16,7 +16,7 @@
 
 <br>
 
-### Repositório do [Curso Frontend React](https://www.youtube.com/watch?v=bxdLk93idaQ&list=PLl4e5NAFzX70Eo0hshlHzmrYi9IG0bYxq) disponível gratuitamente no YouTube:
+### [Curso Frontend React](https://www.youtube.com/watch?v=bxdLk93idaQ&list=PLl4e5NAFzX70Eo0hshlHzmrYi9IG0bYxq) do Canal Tac DEV - Tiago Cordeiro, disponível gratuitamente no YouTube:
 </br>
 <h1 align="center" >DashBoard</h1>
 <p align="center" width="100%">
