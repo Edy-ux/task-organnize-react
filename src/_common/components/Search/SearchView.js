@@ -21,29 +21,26 @@ const SearchView = ({
   const classes = useStyles();
   const matches = useMediaQuery('(max-width:500px)');
   console.log(matches);
-  useEffect(() => {}, [matches, stopSidebarExpand, sidebarIsOpen]);
   return (
     <div className={classes.container}>
-      {!matches && (
-        <Paper component="div" className={`${classes.paper} ${isFocused ? classes.focused : ''}`}>
-          <InputBase
-            autoComplete="off"
-            onChange={handleChangeSearch}
-            className={`${classes.input}`}
-            onFocus={handleFocus}
-            onBlur={handleBlur}
-            placeholder={placeholder}
-            areaLabel={areaLabel}
-            inputProps={{ 'aria-label': 'search users' }}
-          />
-          <div className={classes.wrapperIcons}>
-            <Divider style={{ height: 28 }} orientation="vertical" />
-            <IconButton type="button" aria-label="search">
-              <SearchIcon className={classes.searchIcon} />
-            </IconButton>
-          </div>
-        </Paper>
-      )}
+      <Paper component="div" className={`${classes.paper} ${isFocused ? classes.focused : ''}`}>
+        <InputBase
+          autoComplete="off"
+          onChange={handleChangeSearch}
+          className={`${classes.input}`}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          placeholder={placeholder}
+          areaLabel={areaLabel}
+          inputProps={{ 'aria-label': 'search users' }}
+        />
+        <div className={classes.wrapperIcons}>
+          <Divider style={{ height: 28 }} orientation="vertical" />
+          <IconButton type="button" aria-label="search">
+            <SearchIcon className={classes.searchIcon} />
+          </IconButton>
+        </div>
+      </Paper>
     </div>
   );
 };
