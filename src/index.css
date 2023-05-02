@@ -15,8 +15,3 @@
   background-color: #494747;
   border-radius: 5px;
 }
-
-input:focus {
-  outline: none !important;
-  box-shadow: 0 0 3px #719ece;
-}
