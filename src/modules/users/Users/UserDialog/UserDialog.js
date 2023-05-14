@@ -40,6 +40,7 @@ const UserDialog = () => {
       if (values._id) {
         dispatch(updateUser({ id: values._id, changes: { ...values } }));
         snackbarSuccess();
+
       } else {
         const {
           data: { body }
@@ -51,6 +52,7 @@ const UserDialog = () => {
     } catch ({ response: { data } }) {
     } finally {
       setSubmitting(false);
+      handleOnCloseDialog()
     }
   };
 
