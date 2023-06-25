@@ -46,7 +46,8 @@ const UserDialog = () => {
           data: { body }
         } = await UserService.post(values);
         const { password, ...user } = body;
-        dispatch(addUser(user));
+        const {password, ...rest} = values 
+        dispatch(addUser(rest));
         snackbar('Usuário cadastrado');
       }
     } catch ({ response: { data } }) {
